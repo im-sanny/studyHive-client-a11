@@ -1,4 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
+  const navLinks = (
+    <>
+      <NavLink><li><a>Assignments</a></li></NavLink>
+      <NavLink><li><a>Create Assignments</a></li></NavLink>
+      <NavLink><li><a>Pending Assignments</a></li></NavLink>
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -24,40 +33,27 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a>Assignments</a>
-              </li>
-              <li>
-                <a>Create Assignments</a>
-              </li>
-              <li>
-                <a>Pending Assignments</a>
-              </li>
+              {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
-            <img src="https://i.ibb.co/7tw5yvk/study-group.png" className="w-10" alt="" />
-            StudyHive</a>
+          <a className="btn btn-ghost text-xl lg:-ml-0 -ml-5">
+            <img
+              src="https://i.ibb.co/7tw5yvk/study-group.png"
+              className="w-10"
+              alt=""
+            />
+            StudyHive
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Assignments</a>
-            </li>
-            <li>
-              <a>Create Assignments</a>
-            </li>
-            <li>
-              <a>Pending Assignments</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Login</a>
           <div className="dropdown">
             <div className="btn btn-ghost btn-circle avatar">
               <div tabIndex={0} role="button" className="w-10 rounded-full">
-                <img src="" alt="" />
+                <img src="https://i.ibb.co/7tw5yvk/study-group.png" alt="" />
               </div>
             </div>
             <ul

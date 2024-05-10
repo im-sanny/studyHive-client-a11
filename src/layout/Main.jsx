@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="font-lato">
       {/* navbar */}
       <div>
         <Navbar></Navbar>
