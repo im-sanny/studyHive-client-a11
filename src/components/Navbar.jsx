@@ -1,5 +1,3 @@
-import React from "react";
-
 const Navbar = () => {
   return (
     <div>
@@ -37,7 +35,9 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">StudyHive</a>
+          <a className="btn btn-ghost text-xl">
+            <img src="https://i.ibb.co/7tw5yvk/study-group.png" className="w-10" alt="" />
+            StudyHive</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -56,11 +56,7 @@ const Navbar = () => {
           <a className="btn">Login</a>
           <div className="dropdown">
             <div className="btn btn-ghost btn-circle avatar">
-              <div
-                tabIndex={0}
-                role="button"
-               className="w-10 rounded-full"
-              >
+              <div tabIndex={0} role="button" className="w-10 rounded-full">
                 <img src="" alt="" />
               </div>
             </div>
