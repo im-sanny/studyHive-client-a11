@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const navLinks = (
     <>
-      <NavLink to={'/'}>
+      <NavLink to={"/"}>
         <li>
           <a>Home</a>
         </li>
@@ -66,27 +69,40 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/login"}>
-            <a className="btn">Login</a>
-          </Link>
-          <div className="dropdown">
-            <div className="btn btn-ghost btn-circle avatar">
-              <div tabIndex={0} role="button" className="w-10 rounded-full">
-                <img src="https://i.ibb.co/7tw5yvk/study-group.png" alt="" />
+          {!user && (
+            <Link to={"/login"}>
+              <a className="btn">Login</a>
+            </Link>
+          )}
+          {user && (
+            <div className="dropdown">
+              <div className="btn btn-ghost btn-circle avatar">
+                <div
+                  title={user?.displayName}
+                  tabIndex={0}
+                  role="button"
+                  className="w-10 rounded-full"
+                >
+                  <img
+                    referrerPolicy="no-referrer"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36"
+              >
+                <li>
+                  <a>My Attempted Assignments</a>
+                </li>
+                <li>
+                  <a onClick={logOut}>Logout</a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36"
-            >
-              <li>
-                <a>My Attempted Assignments</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          )}
         </div>
       </div>
     </div>
