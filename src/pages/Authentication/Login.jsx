@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
+    <div className="flex justify-center items-center min-h-[calc(100vh-342px)]">
+      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl my-10">
         <div
           className="hidden bg-cover bg-center lg:block lg:w-1/2"
           style={{
@@ -14,8 +14,8 @@ const Login = () => {
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex justify-center mx-auto">
             <img
-              className="w-auto h-7 sm:h-8"
-              src="https://merakiui.com/images/logo.svg"
+              className="w-auto h-7 sm:h-10"
+              src="https://i.ibb.co/7tw5yvk/study-group.png"
               alt=""
             />
           </div>
