@@ -2,12 +2,11 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Assignments = () => {
   const asnmnts = useLoaderData();
 
-  const navigate = useNavigate();
   const [filterValue, setFilterValue] = useState("all");
 
   const handleFilterChange = (e) => {
@@ -122,14 +121,11 @@ const Assignments = () => {
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
-                        <button
-                          onClick={() =>
-                            navigate(`/assignmentDetails/${asnmnt._id}`)
-                          }
-                          className="text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none ml-2"
-                        >
-                          <FaEye size={23} />
-                        </button>
+                        <Link to={`/assignmentDetails/${asnmnt._id}`}>
+                          <button className="text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none ml-2">
+                            <FaEye size={23} />
+                          </button>
+                        </Link>
                       </div>
                     </td>
                   </tr>

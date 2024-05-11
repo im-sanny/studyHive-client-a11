@@ -1,37 +1,76 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AssignmentDetails = () => {
+  const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-  const asnmtsDetails = useLoaderData();
-  const { id } = useParams();
-  const idInt = id;
-  const asnmnts = asnmtsDetails.find(
-    (asnmtDetails) => asnmtDetails._id === idInt
-  );
 
+  const asnmnt = useLoaderData();
+  //   console.log(asnmnt);
+
+  const { description, difficultyLevel, dueDate, title, _id, marks,creator_email } =
+    asnmnt || {};
+
+  const handleFromSubmission = async (e) => {
+      e.preventDefault();
+    if (user?.email === creator_email) {
+        return toast.error('Creator cant take their own assignment')
+    }
+
+    const form = e.target;
+    const asnId = _id;
+    const link = form.link.value;
+    const email = user?.email;
+    const deadline = startDate;
+    // const marks = parseFloat(marks);
+    const notes = form.notes.value;
+    // const creator_email = creator_email;
+    const status = "Pending";
+
+    const takeAsnmnt = {
+      asnId,
+      link,
+      email,
+      marks,
+      notes,
+      status,
+      difficultyLevel,
+      deadline,
+    };
+    console.table(takeAsnmnt);
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/takeAsnmnt`,
+        takeAsnmnt
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="flex flex-col md:flex-row justify-around gap-5 my-10  items-center md:max-w-screen-xl mx-auto ">
         {/* assignment Details */}
         <div className="flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-light text-gray-800 ">
-              {asnmnts.dueDate}
-            </span>
+            <span className="text-sm font-light text-gray-800 ">{dueDate}</span>
             <span className="px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full ">
-              {asnmnts.difficultyLevel}
+              {difficultyLevel}
             </span>
           </div>
 
           <div>
             <h1 className="mt-2 text-3xl font-semibold text-gray-800 ">
-              {asnmnts.title}
+              {title}
             </h1>
 
-            <p className="mt-2 text-lg text-gray-600 ">{asnmnts.description}</p>
+            <p className="mt-2 text-lg text-gray-600 ">{description}</p>
             <p className="mt-6 text-sm font-bold text-gray-600 ">
               Assignment Creator Details:
             </p>
@@ -49,7 +88,7 @@ const AssignmentDetails = () => {
               </div>
             </div>
             <p className="mt-6 text-lg font-bold text-gray-600 ">
-              Marks: {asnmnts.marks}
+              Marks: {marks}
             </p>
           </div>
         </div>
@@ -59,7 +98,7 @@ const AssignmentDetails = () => {
             Take the Assignment
           </h2>
 
-          <form>
+          <form onSubmit={handleFromSubmission}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
                 <label className="text-gray-700 " htmlFor="link">
@@ -90,19 +129,20 @@ const AssignmentDetails = () => {
                   id="emailAddress"
                   type="email"
                   name="email"
+                  defaultValue={user?.email}
                   disabled
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
               <div>
-                <label className="text-gray-700 " htmlFor="comment">
-                  Comment
+                <label className="text-gray-700 " htmlFor="notes">
+                  Notes
                 </label>
 
                 <textarea
-                  id="comment"
-                  name="comment"
+                  id="notes"
+                  name="notes"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none textarea focus:ring"
                   style={{ height: "50px" }}
                 />

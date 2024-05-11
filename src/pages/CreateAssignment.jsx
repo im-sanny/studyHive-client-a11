@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const CreateAssignment = () => {
   const { user } = useContext(AuthContext);
@@ -12,10 +13,13 @@ const CreateAssignment = () => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const email = form.email.value;
+    const email = form.creator_email.value;
     const deadline = startDate;
     const difficulty = form.difficulty.value;
     const marks = parseFloat(form.marks.value);
+    if (marks < 50 || marks > 100) {
+      return toast.error("Marks should be between 50 and 100");
+    }
     const description = form.description.value;
 
     const jobData = {
@@ -62,7 +66,7 @@ const CreateAssignment = () => {
                 <input
                   id="emailAddress"
                   type="email"
-                  name="email"
+                  name="creator_email"
                   defaultValue={user?.email}
                   disabled
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"

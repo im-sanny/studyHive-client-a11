@@ -21,7 +21,7 @@ const Navbar = () => {
           <a>Create Assignments</a>
         </li>
       </NavLink>
-      <NavLink>
+      <NavLink to={'/pendingAssignment'}>
         <li>
           <a>Pending Assignments</a>
         </li>

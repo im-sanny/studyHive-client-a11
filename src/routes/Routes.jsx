@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path:'/assignmentDetails/:id',
         element:<AssignmentDetails></AssignmentDetails>,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/asnmnts`)
+        loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`)
       }
     ],
   },
