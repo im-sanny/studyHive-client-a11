@@ -2,6 +2,11 @@
 const Faq = () => {
   return (
     <div>
+      <div className="my-10 mx-auto">
+        <h1 className="text-4xl font-bold text-center">
+          Your Question's Our Answer
+        </h1>
+      </div>
       <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 mb-10 rounded-md">
         <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
           <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">
