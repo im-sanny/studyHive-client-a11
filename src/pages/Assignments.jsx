@@ -13,19 +13,23 @@ const Assignments = () => {
   const asnmntData = useLoaderData();
 
   useEffect(() => {
-    setAsnmnts(asnmntData); // Set initial value for asnmnts state
+    setAsnmnts(asnmntData);
   }, [asnmntData]);
 
   const [filterValue, setFilterValue] = useState("all");
-
   const handleFilterChange = (e) => {
     setFilterValue(e.target.value);
   };
-
   const filteredAsnmnts =
     filterValue === "all"
       ? asnmnts
       : asnmnts.filter((item) => item.difficulty === filterValue);
+
+  const badgeColors = {
+    easy: "bg-green-200 text-green-800",
+    medium: "bg-yellow-200 text-yellow-800",
+    hard: "bg-red-200 text-red-800",
+  };
 
   useEffect(() => {
     // Function to fetch data
@@ -137,7 +141,7 @@ const Assignments = () => {
                   <tr key={asnmnt._id}>
                     <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                       <img
-                        src={asnmnt.thumbnailUrl}
+                        src={asnmnt.imageURL}
                         alt=""
                         className="h-20 rounded-md"
                       />
@@ -153,16 +157,23 @@ const Assignments = () => {
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-2">
-                        <p className="px-3 py-1 rounded-full text-blue-500 bg-blue-100/60 text-xs">
+                        <p
+                          className={`px-3 py-1 rounded-full text-xs ${
+                            badgeColors[asnmnt.difficulty]
+                          }`}
+                        >
                           {asnmnt.difficulty}
                         </p>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
+                        <Link to={`/update/${asnmnt._id}`}>
+
                         <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
                           <FaEdit size={20} />
                         </button>
+                        </Link>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
