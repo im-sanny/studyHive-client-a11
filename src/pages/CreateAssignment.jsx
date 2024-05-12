@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateAssignment = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
 
   const handleFormSubmission = async (e) => {
@@ -49,7 +49,7 @@ const CreateAssignment = () => {
       console.log(data);
       form.reset();
       setStartDate(new Date());
-      navigate('/assignments')
+      navigate("/assignments");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
