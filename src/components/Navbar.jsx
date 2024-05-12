@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
@@ -96,7 +97,7 @@ const Navbar = () => {
               >
                 <NavLink to={"/mySubmit"}>
                   <li>
-                    <a>My Submitted Assignment</a>
+                    <a>My Submitted Assignment's</a>
                   </li>
                 </NavLink>
                 <li>

@@ -136,7 +136,7 @@ const Assignments = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y border-2 divide-gray-300 border-b border-opacity-20 border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50">
                 {filteredAsnmnts.map((asnmnt) => (
                   <tr key={asnmnt._id}>
                     <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
