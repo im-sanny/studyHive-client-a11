@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Assignments = () => {
-  const asnmnts = useLoaderData();
+  const [asnmnts, setAsnmnts] = useState([]); // Define asnmnts state
+
+  const asnmntData = useLoaderData();
+
+  useEffect(() => {
+    setAsnmnts(asnmntData); // Set initial value for asnmnts state
+  }, [asnmntData]);
 
   const [filterValue, setFilterValue] = useState("all");
 
@@ -16,14 +25,58 @@ const Assignments = () => {
   const filteredAsnmnts =
     filterValue === "all"
       ? asnmnts
-      : asnmnts.filter((item) => item.difficultyLevel === filterValue);
+      : asnmnts.filter((item) => item.difficulty === filterValue);
+
+  useEffect(() => {
+    // Function to fetch data
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/asnmnts`
+        );
+        setAsnmnts(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getData();
+  }, []); // Run only once on component mount
+
+  const handleDelete = async (id) => {
+    // Display a confirmation dialog
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this assignment!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          // Send delete request to the server
+          await axios.delete(`${import.meta.env.VITE_API_URL}/asnmnt/${id}`);
+          // Remove the deleted assignment from the local state
+          setAsnmnts((prevAsnmnts) =>
+            prevAsnmnts.filter((asnmnt) => asnmnt._id !== id)
+          );
+          // Show success message
+          toast.success("Assignment deleted successfully!");
+        } catch (error) {
+          console.log(error.message);
+          toast.error(error.message);
+        }
+      }
+    });
+  };
 
   return (
     <>
       <div>
         <div className="flex justify-center items-center">
           <div className="mt-4 bg-slate-400 p-2 rounded-md">
-            <label htmlFor="filter" className="mr-2 text-gray-700 text-2xl ">
+            <label htmlFor="filter" className="mr-2 text-gray-700 text-2xl">
               Filter by Difficulty Level:
             </label>
             <select
@@ -49,32 +102,32 @@ const Assignments = () => {
             </span>
           </div>
 
-          <div className="overflow-x-auto rounded-lg">
+          <div className="overflow-x-auto rounded-lg bg-gradient-to-br from-blue-500 to-blue-400">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gradient-to-br from-blue-500 to-blue-300">
                 <tr>
-                  <th className="py-3.5 px-4 text-sm text-left rtl:text-right text-gray-500 font-bold">
+                  <th className="py-3.5 px-4 text-sm text-left rtl:text-right text-gray-800 font-bold">
                     Thumbnail
                   </th>
-                  <th className="py-3.5 px-4 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="py-3.5 px-4 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Title
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Deadline
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Marks
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Difficulty
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Edit
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     Delete
                   </th>
-                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                  <th className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-800">
                     View
                   </th>
                 </tr>
@@ -82,47 +135,50 @@ const Assignments = () => {
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredAsnmnts.map((asnmnt) => (
                   <tr key={asnmnt._id}>
-                    <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                    <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                       <img
                         src={asnmnt.thumbnailUrl}
                         alt=""
                         className="h-20 rounded-md"
                       />
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                    <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                       {asnmnt.title}
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                      {asnmnt.dueDate}
+                    <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      {new Date(asnmnt.deadline).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                    <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                       {asnmnt.marks}
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-2">
                         <p className="px-3 py-1 rounded-full text-blue-500 bg-blue-100/60 text-xs">
-                          {asnmnt.difficultyLevel}
+                          {asnmnt.difficulty}
                         </p>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
-                        <button className="text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none ml-1">
-                          <FaEdit size={20}></FaEdit>
+                        <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
+                          <FaEdit size={20} />
                         </button>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
-                        <button className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none ml-3">
-                          <AiFillDelete size={20}></AiFillDelete>
+                        <button
+                          onClick={() => handleDelete(asnmnt._id)}
+                          className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none ml-3"
+                        >
+                          <AiFillDelete size={20} />
                         </button>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
                         <Link to={`/assignmentDetails/${asnmnt._id}`}>
-                          <button className="text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none ml-2">
+                          <button className="text-gray-500 transition-colors duration-200 hover:text-green-500 focus:outline-none ml-2">
                             <FaEye size={23} />
                           </button>
                         </Link>

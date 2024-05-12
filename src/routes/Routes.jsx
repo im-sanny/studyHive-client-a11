@@ -8,6 +8,7 @@ import CreateAssignment from "../pages/CreateAssignment";
 import Assignments from "../pages/Assignments";
 import AssignmentDetails from "../pages/subpages/AssignmentDetails";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
         path:'/assignmentDetails/:id',
         element:<AssignmentDetails></AssignmentDetails>,
         loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`)
-      }
+      },
+      // {
+      //   path:'/mySubmit',
+      //   element:<MySubmittedAsn></MySubmittedAsn>,
+      // }
     ],
   },
 ]);

@@ -11,17 +11,17 @@ const Navbar = () => {
           <a>Home</a>
         </li>
       </NavLink>
-      <NavLink to={'/assignments'}>
+      <NavLink to={"/assignments"}>
         <li>
-          <a>Assignments</a>
+          <a>Assignments p</a>
         </li>
       </NavLink>
-      <NavLink to={'/createAssignment'}>
+      <NavLink to={"/createAssignment"}>
         <li>
-          <a>Create Assignments</a>
+          <a>Create Assignments pr</a>
         </li>
       </NavLink>
-      <NavLink to={'/pendingAssignment'}>
+      <NavLink to={"/pendingAssignment"}>
         <li>
           <a>Pending Assignments</a>
         </li>
@@ -94,9 +94,11 @@ const Navbar = () => {
                 tabIndex={0}
                 className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36"
               >
-                <li>
-                  <a>My Attempted Assignments</a>
-                </li>
+                <NavLink to={"/mySubmit"}>
+                  <li>
+                    <a>My Submitted Assignment</a>
+                  </li>
+                </NavLink>
                 <li>
                   <a onClick={logOut}>Logout</a>
                 </li>

@@ -13,13 +13,20 @@ const AssignmentDetails = () => {
   const asnmnt = useLoaderData();
   //   console.log(asnmnt);
 
-  const { description, difficultyLevel, dueDate, title, _id, marks,creator_email } =
-    asnmnt || {};
+  const {
+    description,
+    difficulty,
+    deadline,
+    title,
+    _id,
+    marks,
+    student,
+  } = asnmnt || {};
 
   const handleFromSubmission = async (e) => {
-      e.preventDefault();
-    if (user?.email === creator_email) {
-        return toast.error('Creator cant take their own assignment')
+    e.preventDefault();
+    if (user?.email === student?.email) {
+      return toast.error("Creator cant take their own assignment");
     }
 
     const form = e.target;
@@ -39,8 +46,9 @@ const AssignmentDetails = () => {
       marks,
       notes,
       status,
-      difficultyLevel,
+      difficulty,
       deadline,
+      student_email:student?.email
     };
     console.table(takeAsnmnt);
     try {
@@ -59,9 +67,11 @@ const AssignmentDetails = () => {
         {/* assignment Details */}
         <div className="flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-light text-gray-800 ">{dueDate}</span>
+            <span className="text-sm font-light text-gray-800 ">
+                {new Date(deadline).toLocaleDateString()}
+                </span>
             <span className="px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full ">
-              {difficultyLevel}
+              {difficulty}
             </span>
           </div>
 
@@ -77,14 +87,14 @@ const AssignmentDetails = () => {
             <div className="flex items-center gap-5">
               <div>
                 <p className="mt-2 text-sm  text-gray-600 ">
-                  Name: Jhankar Vai.
+                  Name: {student?.name}
                 </p>
                 <p className="mt-2 text-sm  text-gray-600 ">
-                  Email: jhankar@mahbub.com
+                  Email: {student?.email}
                 </p>
               </div>
               <div className="rounded-full object-cover overflow-hidden w-14 h-14">
-                <img src="" alt="" />
+                <img src={student?.photo} alt="" />
               </div>
             </div>
             <p className="mt-6 text-lg font-bold text-gray-600 ">
