@@ -8,6 +8,8 @@ import CreateAssignment from "../pages/CreateAssignment";
 import Assignments from "../pages/Assignments";
 import AssignmentDetails from "../pages/subpages/AssignmentDetails";
 import UpdateAssignment from "../pages/UpdateAssignment";
+import PrivateRoutes from "./PrivateRoutes";
+import MySubmittedAsn from "../pages/MySubmittedAsn";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/createAssignment",
-        element: <CreateAssignment></CreateAssignment>,
+        element: (
+          <PrivateRoutes>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/assignments",
@@ -38,20 +44,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignmentDetails/:id",
-        element: <AssignmentDetails></AssignmentDetails>,
+        element: (
+          <PrivateRoutes>
+            <AssignmentDetails></AssignmentDetails>,
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`),
       },
       {
         path: "/update/:id",
-        element: <UpdateAssignment></UpdateAssignment>,
+        element: (
+          <PrivateRoutes>
+            <UpdateAssignment></UpdateAssignment>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`),
       },
-      // {
-      //   path:'/mySubmit',
-      //   element:<MySubmittedAsn></MySubmittedAsn>,
-      // }
+      {
+        path: "/mySubmit",
+        element: (
+          <PrivateRoutes>
+            <MySubmittedAsn></MySubmittedAsn>
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
 ]);

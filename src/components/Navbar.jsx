@@ -13,12 +13,12 @@ const Navbar = () => {
       </NavLink>
       <NavLink to={"/assignments"}>
         <li>
-          <a>Assignments p</a>
+          <a>Assignments</a>
         </li>
       </NavLink>
       <NavLink to={"/createAssignment"}>
         <li>
-          <a>Create Assignments pr</a>
+          <a>Create Assignments</a>
         </li>
       </NavLink>
       <NavLink to={"/pendingAssignment"}>

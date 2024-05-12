@@ -169,9 +169,10 @@ const Assignments = () => {
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
                         <Link to={`/update/${asnmnt._id}`}>
-                          <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
-                            <FaEdit size={20} />
-                          </button>
+
+                        <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
+                          <FaEdit size={20} />
+                        </button>
                         </Link>
                       </div>
                     </td>
