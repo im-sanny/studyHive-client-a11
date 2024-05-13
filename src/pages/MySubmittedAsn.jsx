@@ -50,7 +50,7 @@ const MySubmittedAsn = () => {
               >
                 <td className="p-3 ml-5">{assignment.title}</td>
                 <td className="p-3">{assignment.marks}</td>
-                <td className="p-3">{assignment.obtainedMark}</td>
+                <td className="p-3">{assignment.obtainedMark || 'In Progress'}</td>
                 <td className="">
                   <p
                     className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
@@ -70,7 +70,7 @@ const MySubmittedAsn = () => {
                     {assignment.status}
                   </p>
                 </td>
-                <td className="p-3">well done</td>
+                <td className="p-3 badge flex items-center mt-3 bg-green-300">{assignment.feedback || "In Progress"} </td>
               </tr>
             ))}
           </tbody>
