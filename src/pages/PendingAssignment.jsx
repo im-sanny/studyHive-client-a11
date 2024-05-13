@@ -3,18 +3,34 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 
 const PendingAssignment = () => {
-    const { user } = useContext(AuthContext);
-    const [subAsn, setSubAsn] = useState([]);
-  
-    useEffect(() => {
-      getDate();
-    }, [user]);
-  
-    const getDate = async () => {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/pending`);
-        setSubAsn(response.data);
-    };
-    console.log(subAsn);
+  const { user } = useContext(AuthContext);
+  const [subAsn, setSubAsn] = useState([]);
+
+  useEffect(() => {
+    getDate();
+  }, [user]);
+
+  const getDate = async () => {
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/pending`);
+    setSubAsn(response.data);
+  };
+  // console.log(subAsn);
+
+  // handle marks
+  const handleMarks = async (
+    id,
+    prevStatus,
+    status,
+    prevMarks,
+    obtainedMark
+  ) => {
+    console.log(id, prevStatus, status, prevMarks, obtainedMark);
+    const { data } = await axios.patch(
+      `${import.meta.env.VITE_API_URL}/takeAsnmnt/${id}`,
+      { status, obtainedMark }
+    );
+    console.log(data);
+  };
 
   return (
     <div>
@@ -31,15 +47,14 @@ const PendingAssignment = () => {
               <col style={{ width: "20%" }} />
               <col style={{ width: "20%" }} />
               <col style={{ width: "20%" }} />
-              
+
               <col style={{ width: "20%" }} />
-              
             </colgroup>
             <thead className="bg-gray-700 dark:bg-green-300 text-black font-bold">
               <tr className="text-left">
                 <th className="p-3">Examinee Name</th>
                 <th className="p-3">Assignment Title</th>
-                <th className="p-3">Marks</th>
+                <th className="p-3">Full Marks</th>
                 <th className="p-3">Status</th>
                 <th className="p-3">Give Marks</th>
               </tr>
@@ -53,7 +68,7 @@ const PendingAssignment = () => {
                   <td className="p-3 ml-5">{assignment.name}</td>
                   <td className="p-3">{assignment.title}</td>
                   <td className="p-3">{assignment.marks}</td>
-                  
+
                   <td className="">
                     <p
                       className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
@@ -73,7 +88,20 @@ const PendingAssignment = () => {
                       {assignment.status}
                     </p>
                   </td>
-                  <td className="btn btn-sm mt-2">Give Marks</td>
+                  <td
+                    onClick={() =>
+                      handleMarks(
+                        assignment._id,
+                        assignment.status,
+                        "complete",
+                        assignment.obtainedMark,
+                        "60"
+                      )
+                    }
+                    className="btn btn-sm mt-2"
+                  >
+                    Give Marks
+                  </td>
                 </tr>
               ))}
             </tbody>

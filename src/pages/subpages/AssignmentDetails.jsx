@@ -29,6 +29,7 @@ const AssignmentDetails = () => {
     const deadline = startDate;
     const notes = form.notes.value;
     const status = "Pending";
+    const obtainedMark =parseFloat(0);
 
     const takeAsnmnt = {
       title,
@@ -36,6 +37,7 @@ const AssignmentDetails = () => {
       email,
       name,
       marks,
+      obtainedMark,
       notes,
       status,
       difficulty,

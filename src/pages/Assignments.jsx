@@ -13,7 +13,7 @@ const Assignments = () => {
   const [asnmnts, setAsnmnts] = useState([]);
   const asnmntData = useLoaderData();
   // console.log(asnmntData);
-  console.log(asnmnts);
+  // console.log(asnmnts);
 
   useEffect(() => {
     setAsnmnts(asnmntData);
