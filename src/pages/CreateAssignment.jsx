@@ -65,7 +65,7 @@ const CreateAssignment = () => {
           </h2>
 
           <form onSubmit={handleFormSubmission}>
-            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div className="grid  gap-6 mt-4 grid-cols-2">
               <div>
                 <label className="text-gray-700 " htmlFor="title">
                   Assignment Title
@@ -75,6 +75,7 @@ const CreateAssignment = () => {
                   name="title"
                   type="text"
                   placeholder="title"
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -89,6 +90,7 @@ const CreateAssignment = () => {
                   name="creator_email"
                   defaultValue={user?.email}
                   disabled
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -102,6 +104,7 @@ const CreateAssignment = () => {
                   type="link"
                   name="imageURL"
                   placeholder="imageURL"
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -121,6 +124,7 @@ const CreateAssignment = () => {
                 <select
                   name="difficulty"
                   id="difficulty"
+                  required
                   className="border p-2 rounded-md"
                 >
                   <option value="easy">Easy</option>
@@ -136,12 +140,13 @@ const CreateAssignment = () => {
                   id="marks"
                   name="marks"
                   type="number"
+                  required
                   placeholder="marks"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
-                  min="100" // Set the minimum value to 100
-                  max="100" // Set the maximum value to 100
-                  defaultValue="100" // Set the default value to 100
-                  readOnly // Make the input read-only to prevent manual editing
+                  min="100"
+                  max="100"
+                  defaultValue="100"
+                  readOnly
                 />
               </div>
             </div>
@@ -153,6 +158,7 @@ const CreateAssignment = () => {
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 name="description"
                 id="description"
+                required
                 placeholder="description"
               ></textarea>
             </div>

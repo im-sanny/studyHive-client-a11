@@ -1,3 +1,5 @@
+import { MdOutlineMarkEmailUnread } from "react-icons/md";
+import { FaPhoneSquareAlt } from "react-icons/fa";
 const Footer = () => {
   return (
     <div>
@@ -16,11 +18,21 @@ const Footer = () => {
                 StudyHive
               </span>
             </a>
-            <p className="text-left lg:pr-5">
+            <p className="lg:text-left text-center lg:pr-5">
               Unlock your potential with StudyHive - Where collaboration meets
-              learning. Join us in shaping the future of education, one study
-              session at a time.
+              learning.
             </p>
+            <div className="w-full lg:text-start text-center">
+              <p>Connect with us</p>
+              <p className="flex lg:justify-start justify-center items-center gap-1 lg:text-left text-center lg:pr-5">
+                <MdOutlineMarkEmailUnread size={20} />{" "}
+                raselparvezsanny@gmail.com
+              </p>
+              <p className="flex lg:justify-start justify-center items-center gap-1 lg:text-left text-center lg:pr-5">
+                <FaPhoneSquareAlt size={20} />
+                01907507@@
+              </p>
+            </div>
           </div>
           <div className="grid grid-cols-2 mx-auto text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
             <div className="space-y-3">

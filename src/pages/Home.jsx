@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import Faq from "../components/Faq";
 import Features from "../components/Features";
+import Stats from "../components/Stats";
 
 const Home = () => {
   return (
@@ -13,6 +14,9 @@ const Home = () => {
       </div>
       <div>
         <Faq></Faq>
+      </div>
+      <div>
+        <Stats></Stats>
       </div>
     </div>
   );
