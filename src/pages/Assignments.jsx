@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FaEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
@@ -6,11 +6,14 @@ import { Link, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Assignments = () => {
-  const [asnmnts, setAsnmnts] = useState([]); // Define asnmnts state
-
+  const { user } = useContext(AuthContext);
+  const [asnmnts, setAsnmnts] = useState([]);
   const asnmntData = useLoaderData();
+  // console.log(asnmntData);
+  console.log(asnmnts);
 
   useEffect(() => {
     setAsnmnts(asnmntData);
@@ -32,7 +35,6 @@ const Assignments = () => {
   };
 
   useEffect(() => {
-    // Function to fetch data
     const getData = async () => {
       try {
         const { data } = await axios.get(
@@ -44,10 +46,23 @@ const Assignments = () => {
       }
     };
     getData();
-  }, []); // Run only once on component mount
+  }, []);
 
   const handleDelete = async (id) => {
-    // Display a confirmation dialog
+    const assignmentToDelete = asnmnts.find((asnmnt) => asnmnt._id === id);
+
+    if (!assignmentToDelete) {
+      console.error("Assignment not found");
+      return;
+    }
+
+    const student_email = assignmentToDelete.student.email;
+
+    if (user?.email !== student_email) {
+      toast.error("You are not authorized to delete this assignment.");
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this assignment!",
@@ -169,17 +184,18 @@ const Assignments = () => {
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
                         <Link to={`/update/${asnmnt._id}`}>
-
-                        <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
-                          <FaEdit size={20} />
-                        </button>
+                          <button className="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none ml-1">
+                            <FaEdit size={20} />
+                          </button>
                         </Link>
                       </div>
                     </td>
                     <td className="px-4 py-4 text-sm whitespace-nowrap">
                       <div className="flex items-center gap-x-6">
                         <button
-                          onClick={() => handleDelete(asnmnt._id)}
+                          onClick={() =>
+                            handleDelete(asnmnt._id, asnmnt.student.email)
+                          }
                           className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none ml-3"
                         >
                           <AiFillDelete size={20} />

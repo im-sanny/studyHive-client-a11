@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const AssignmentDetails = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
   const [startDate, setStartDate] = useState(new Date());
 
   const asnmnt = useLoaderData();
@@ -24,6 +25,7 @@ const AssignmentDetails = () => {
     const form = e.target;
     const link = form.link.value;
     const email = user?.email;
+    const name = user?.displayName;
     const deadline = startDate;
     const notes = form.notes.value;
     const status = "Pending";
@@ -32,6 +34,7 @@ const AssignmentDetails = () => {
       title,
       link,
       email,
+      name,
       marks,
       notes,
       status,
@@ -49,6 +52,7 @@ const AssignmentDetails = () => {
       document.getElementById("my_modal_5").close();
       // Optionally, you can display a success message using toast.success()
       toast.success("Assignment submitted successfully!");
+      navigate('/mySubmit')
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +79,7 @@ const AssignmentDetails = () => {
   return (
     <>
       <div className="flex justify-center items-center bg-[url('https://i.ibb.co/svVbpj0/1849-R0l-VIEp-FTi-A3-MDgt-NTE.jpg')] bg-cover bg-no-repeat p-5 my-10 rounded-lg bg-center py-20">
-        <div className="w-[400px]">
+        <div className="">
           <div className="max-w-3xl p-1">
             {/* assignment Details */}
             <div className="flex-1 px-4 py-7 bg-white border-2 border-yellow-200 rounded-lg shadow-md">
@@ -93,7 +97,7 @@ const AssignmentDetails = () => {
                   {title}
                 </h1>
 
-                <p className="mt-2 text-lg text-gray-600 ">{description}</p>
+                <p className="mt-2 text-lg text-gray-600">{description}</p>
                 <p className="mt-6 text-sm font-bold text-gray-600 ">
                   Assignment Creator Details:
                 </p>

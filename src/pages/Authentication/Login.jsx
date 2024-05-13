@@ -44,7 +44,7 @@ const Login = () => {
       toast.error(err?.message);
     }
   };
-  if (user || loading) return;
+  // if (user || loading) return;
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-342px)]">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl my-10">
