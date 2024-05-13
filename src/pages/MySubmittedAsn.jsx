@@ -13,7 +13,7 @@ const MySubmittedAsn = () => {
 
   const getDate = async () => {
     const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/my-submit/${user?.email}`
+      `${import.meta.env.VITE_API_URL}/my-submit/${user?.email}`, {withCredentials: true}
     );
     setSubAsn(data);
   };
@@ -50,7 +50,7 @@ const MySubmittedAsn = () => {
               >
                 <td className="p-3 ml-5">{assignment.title}</td>
                 <td className="p-3">{assignment.marks}</td>
-                <td className="p-3">{assignment.obtainedMark || 'In Progress'}</td>
+                <td className="p-3 badge border-none text-black flex items-center justify-center mt-3 lg:ml-10 ml-5 bg-green-300">{assignment.obtainedMark || 'pending'}</td>
                 <td className="">
                   <p
                     className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
@@ -70,7 +70,7 @@ const MySubmittedAsn = () => {
                     {assignment.status}
                   </p>
                 </td>
-                <td className="p-3 badge border-none text-black flex items-center mt-3 bg-green-300">{assignment.feedback || "In Progress"} </td>
+                <td className="p-3 badge border-none text-black flex items-center mt-3 bg-green-300 ml-5">{assignment.feedback || "pending"} </td>
               </tr>
             ))}
           </tbody>

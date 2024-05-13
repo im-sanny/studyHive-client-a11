@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import 'animate.css';
+import "animate.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -80,7 +80,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-10 w-10 -ml-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -95,7 +95,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
@@ -159,7 +159,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36"
+              className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36 rounded-md"
             >
               <NavLink to={"/mySubmit"}>
                 <li>
