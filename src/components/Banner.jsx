@@ -1,9 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init()
 
 const Banner = () => {
   return (
@@ -26,14 +30,14 @@ const Banner = () => {
         <SwiperSlide>
           <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
-              <div className="flex items-center justify-center lg:w-3/6 ">
+              <div data-aos="fade-right" className="flex items-center justify-center lg:w-3/6 ">
                 <img
                   src="https://i.ibb.co/TtsRT14/4807.jpg"
                   alt=""
                   className="object-cover h-[405px] w-[800px] rounded-md p-5"
                 />
               </div>
-              <div className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
+              <div data-aos="fade-left" className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
                 <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl">
                   Welcome to StudyHive, where learning meets innovation.
                 </h1>

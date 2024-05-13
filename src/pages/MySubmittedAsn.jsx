@@ -70,7 +70,7 @@ const MySubmittedAsn = () => {
                     {assignment.status}
                   </p>
                 </td>
-                <td className="p-3 badge flex items-center mt-3 bg-green-300">{assignment.feedback || "In Progress"} </td>
+                <td className="p-3 badge border-none text-black flex items-center mt-3 bg-green-300">{assignment.feedback || "In Progress"} </td>
               </tr>
             ))}
           </tbody>

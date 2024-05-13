@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import 'animate.css';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -99,14 +100,14 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl lg:-ml-0 -ml-5">
+        <button className="btn btn-ghost text-xl lg:-ml-0 -ml-5 animate__animated animate__backInDown">
           <img
             src="https://i.ibb.co/7tw5yvk/study-group.png"
-            className="w-10"
+            className="w-10 "
             alt=""
           />
           StudyHive
-        </a>
+        </button>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>

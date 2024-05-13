@@ -4,9 +4,9 @@ import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Registration = () => {
-  const location = useLocation()
+  const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state || '/';
+  const from = location.state || "/";
   const { user, setUser, createUser, signInWithGoogle, updateUserProfile } =
     useContext(AuthContext);
 
@@ -19,12 +19,20 @@ const Registration = () => {
     const pass = form.password.value;
     console.log({ email, name, photo, pass });
     try {
+      // Validation
+      if (!validateEmail(email)) {
+        throw new Error("Please enter a valid email address");
+      }
+      if (pass.length < 6) {
+        throw new Error("Password should be at least 6 characters long");
+      }
+
       // user registration
       const result = await createUser(email, pass);
       console.log(result);
       await updateUserProfile(name, photo);
       setUser({ ...user, photoURL: photo, displayName: name });
-     navigate(from, {replace: true });
+      navigate(from, { replace: true });
       toast.success("SignUp Successful");
     } catch (err) {
       console.log(err);
@@ -32,11 +40,16 @@ const Registration = () => {
     }
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
       toast.success("SignIn Successful");
-     navigate(from, {replace: true });
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -80,6 +93,7 @@ const Registration = () => {
                 id="name"
                 autoComplete="name"
                 name="name"
+                required
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
               />
@@ -95,6 +109,7 @@ const Registration = () => {
                 id="LoggingEmailAddress"
                 autoComplete="email"
                 name="email"
+                required
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
               />
@@ -112,6 +127,7 @@ const Registration = () => {
                 id="loggingPassword"
                 autoComplete="current-password"
                 name="password"
+                required
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
               />
@@ -127,6 +143,7 @@ const Registration = () => {
                 id="photo"
                 autoComplete="photo"
                 name="photo"
+                required
                 className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
               />
