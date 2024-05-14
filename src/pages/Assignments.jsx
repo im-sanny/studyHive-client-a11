@@ -12,8 +12,7 @@ const Assignments = () => {
   const { user } = useContext(AuthContext);
   const [asnmnts, setAsnmnts] = useState([]);
   const asnmntData = useLoaderData();
-  // console.log(asnmntData);
-  // console.log(asnmnts);
+  console.log(asnmnts);
 
   useEffect(() => {
     setAsnmnts(asnmntData);

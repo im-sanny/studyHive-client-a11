@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import Faq from "../components/Faq";
 import Features from "../components/Features";
+import MkSlider from "../components/MkSlider";
 import Stats from "../components/Stats";
 
 const Home = () => {
@@ -17,6 +18,9 @@ const Home = () => {
       </div>
       <div>
         <Stats></Stats>
+      </div>
+      <div>
+        <MkSlider></MkSlider>
       </div>
     </div>
   );
