@@ -14,7 +14,7 @@ const MkSlider = () => {
       <Marquee gradientColor="rgb(248 251 253)" gradientWidth={200}>
         <div className=" w-full grid grid-cols-4">
           <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-gray-900 dark:bg-gray-50">
+            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-blue-200">
               <p className="relative px-6 py-1 text-lg italic text-center text-gray-100 dark:text-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ const MkSlider = () => {
                 </svg>
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-yellow-100">
               <img
                 src="https://source.unsplash.com/50x50/?portrait?1"
                 alt=""
@@ -51,8 +51,8 @@ const MkSlider = () => {
             </div>
           </div>
           <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-gray-900 dark:bg-gray-50">
-              <p className="relative px-6 py-1 text-lg italic text-center text-gray-100 dark:text-gray-800">
+            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-green-100">
+              <p className="relative px-6 py-1 text-lg italic text-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -77,7 +77,7 @@ const MkSlider = () => {
                 </svg>
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 text-gray-900 ">
               <img
                 src="https://source.unsplash.com/50x50/?portrait?2"
                 alt=""
@@ -88,7 +88,7 @@ const MkSlider = () => {
             </div>
           </div>
           <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-gray-900 dark:bg-gray-50">
+            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-cyan-200">
               <p className="relative px-6 py-1 text-lg italic text-center text-gray-100 dark:text-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ const MkSlider = () => {
                 </svg>
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-orange-100">
               <img
                 src="https://source.unsplash.com/50x50/?portrait?3"
                 alt=""
@@ -126,7 +126,7 @@ const MkSlider = () => {
             </div>
           </div>
           <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-gray-900 dark:bg-gray-50">
+            <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 bg-yellow-100">
               <p className="relative px-6 py-1 text-lg italic text-center text-gray-100 dark:text-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +152,7 @@ const MkSlider = () => {
                 </svg>
               </p>
             </div>
-            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+            <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-green-100">
               <img
                 src="https://source.unsplash.com/50x50/?portrait?4"
                 alt=""

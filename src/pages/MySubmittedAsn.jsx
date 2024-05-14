@@ -13,7 +13,8 @@ const MySubmittedAsn = () => {
 
   const getDate = async () => {
     const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/my-submit/${user?.email}`, {withCredentials: true}
+      `${import.meta.env.VITE_API_URL}/my-submit/${user?.email}`,
+      { withCredentials: true }
     );
     setSubAsn(data);
   };
@@ -49,11 +50,13 @@ const MySubmittedAsn = () => {
                 className="border-b border-opacity-20 border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50"
               >
                 <td className="p-3 ml-5">{assignment.title}</td>
-                <td className="p-3">{assignment.marks}</td>
-                <td className="p-3 badge border-none text-black flex items-center justify-center mt-3 lg:ml-10 ml-5 bg-green-300">{assignment.obtainedMark || 'pending'}</td>
-                <td className="">
+                <td className="p-3 ">{assignment.marks}</td>
+                <td className="p-3 badge border-none text-black flex items-center  my-3 lg:ml-5 bg-green-300">
+                  {assignment.obtainedMark || "pending"}
+                </td>
+                <td className="my-3 p-3">
                   <p
-                    className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
+                    className={`badge border-none text-black lg:flex items-center bg-blue-300  ${
                       assignment.status === "Pending" &&
                       "bg-yellow-100/60 text-yellow-500"
                     } ${
@@ -70,7 +73,9 @@ const MySubmittedAsn = () => {
                     {assignment.status}
                   </p>
                 </td>
-                <td className="p-3 badge border-none text-black flex items-center mt-3 bg-green-300 ml-5">{assignment.feedback || "pending"} </td>
+                <td className="p-3 badge border-none text-black flex items-center my-3 bg-green-300 lg:ml-5">
+                  {assignment.feedback || "pending"}
+                </td>
               </tr>
             ))}
           </tbody>

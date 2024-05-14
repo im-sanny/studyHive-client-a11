@@ -28,7 +28,7 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10">
+          <section className=" lg:p-10">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
               <div
                 data-aos="fade-right"
@@ -62,7 +62,7 @@ const Banner = () => {
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="px-8 py-3 text-lg font-semibold border rounded border-gray-100 dark:border-gray-800"
+                    className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
                     <Link to={"/registration"}>Registration</Link>
                   </a>
@@ -72,7 +72,7 @@ const Banner = () => {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10">
+          <section className=" lg:p-10">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
               <div className="flex items-center justify-center lg:w-3/6 ">
                 <img
@@ -100,7 +100,7 @@ const Banner = () => {
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="px-8 py-3 text-lg font-semibold border rounded border-gray-100 dark:border-gray-800"
+                    className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
                     <Link to={"/registration"}>Registration</Link>
                   </a>
@@ -110,7 +110,7 @@ const Banner = () => {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10 ">
+          <section className="lg:p-10">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
               <div className="flex items-center justify-center lg:w-3/6 ">
                 <img
@@ -120,7 +120,7 @@ const Banner = () => {
                 />
               </div>
               <div className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
-                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-black via-blue-500 to-rose-400 text-transparent bg-clip-text animate-gradient">
+                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-gray-700 via-blue-500 to-rose-400 text-transparent bg-clip-text animate-gradient">
                   Discover the joy of learning with StudyHive's resources.
                 </h1>
                 <p className="mt-3 mb-3 text-lg lg:mx-0 mx-8">
@@ -138,7 +138,7 @@ const Banner = () => {
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="px-8 py-3 text-lg font-semibold border rounded border-gray-100 dark:border-gray-800"
+                    className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
                     <Link to={"/registration"}>Registration</Link>
                   </a>
@@ -148,7 +148,7 @@ const Banner = () => {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10">
+          <section className="lg:p-10">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
               <div className="flex items-center justify-center lg:w-3/6 ">
                 <img
@@ -176,7 +176,7 @@ const Banner = () => {
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="px-8 py-3 text-lg font-semibold border rounded border-gray-100 dark:border-gray-800"
+                    className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
                     <Link to={"/registration"}>Registration</Link>
                   </a>

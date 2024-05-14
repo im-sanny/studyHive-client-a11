@@ -24,7 +24,7 @@ const Stats = () => {
   }, []);
   return (
     <div className="bg-cover bg-no-repeat my-10 rounded-lg bg-center">
-      <section className="p-6 my-6 rounded-lg bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
+      <section className="p-6 my-6 rounded-lg bg-blue-100 ">
         <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
           <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
             <div className="flex justify-center align-middle rounded-lg sm:p-4 bg-violet-400 dark:bg-violet-600">
