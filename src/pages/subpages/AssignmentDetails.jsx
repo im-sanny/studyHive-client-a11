@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const AssignmentDetails = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
 
   const asnmnt = useLoaderData();
@@ -29,7 +29,7 @@ const AssignmentDetails = () => {
     const deadline = startDate;
     const notes = form.notes.value;
     const status = "Pending";
-    const obtainedMark =parseFloat(0);
+    const obtainedMark = parseFloat(0);
 
     const takeAsnmnt = {
       title,
@@ -48,13 +48,14 @@ const AssignmentDetails = () => {
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt`,
+        { withCredentials: true },
         takeAsnmnt
       );
       console.log(data);
       document.getElementById("my_modal_5").close();
       // Optionally, you can display a success message using toast.success()
       toast.success("Assignment submitted successfully!");
-      navigate('/mySubmit')
+      navigate("/mySubmit");
     } catch (error) {
       console.log(error);
     }

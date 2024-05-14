@@ -13,7 +13,10 @@ const PendingAssignment = () => {
   }, [user]);
 
   const getDate = async () => {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/pending`);
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/pending`,
+      { withCredentials: true }
+    );
     setSubAsn(response.data);
   };
   // console.log(subAsn);
@@ -28,10 +31,8 @@ const PendingAssignment = () => {
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt/${id}`,
         { status: "Completed", obtainedMark: finalMark, feedback: feedback }
-        );
-        setSubAsn((prevSubAsn) =>
-      prevSubAsn.filter((asn) => asn._id !== id)
       );
+      setSubAsn((prevSubAsn) => prevSubAsn.filter((asn) => asn._id !== id));
       toast.success("Assignment marking successful");
       console.log(data);
     } catch (error) {

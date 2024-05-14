@@ -51,7 +51,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`,{ credentials: "include" }),
       },
       {
         path: "/update/:id",
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`,{ credentials: "include" }),
       },
       {
         path: "/mySubmit",
