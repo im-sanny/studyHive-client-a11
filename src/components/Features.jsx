@@ -1,4 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
+
 const Features = () => {
   return (
     <div className="mt-20">
@@ -12,7 +16,11 @@ const Features = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-        <div className="w-full max-w-sm bg-[#fff6b5] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto">
+        <div
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          className="w-full max-w-sm bg-[#fff6b5] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
+        >
           <div className="">
             <img
               src="https://i.ibb.co/zXwVygq/vecteezy-white-clipboard-task-management-todo-check-list-efficient-9315274.png"
@@ -42,7 +50,12 @@ const Features = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-sm bg-[#F8CAED] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="linear"
+          className="w-full max-w-sm bg-[#F8CAED] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
+        >
           <div className="flex items-center">
             <img
               src="https://i.ibb.co/fkF9BFS/vecteezy-white-clipboard-task-management-todo-check-list-efficient-8879451.png"
@@ -70,7 +83,12 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-sm bg-[#E0F7FF] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto">
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="linear"
+          className="w-full max-w-sm bg-[#E0F7FF] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
+        >
           <div className="flex items-center">
             <img
               src="https://i.ibb.co/BLCvSvw/vecteezy-3d-folder-and-paper-for-management-file-document-efficient-17218009.png"
@@ -98,7 +116,11 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-sm bg-[#B8FFD9] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto">
+        <div
+          data-aos="fade-left"
+          data-aos-duration="2000"
+          className="w-full max-w-sm bg-[#B8FFD9] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
+        >
           <div className="flex items-center">
             <img
               src="https://i.ibb.co/YyhYQLN/vecteezy-3d-high-quality-guarantee-symbol-medal-button-with-18842667.png"

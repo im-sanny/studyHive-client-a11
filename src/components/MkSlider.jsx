@@ -3,8 +3,13 @@ import Marquee from "react-fast-marquee";
 const MkSlider = () => {
   return (
     <>
+    <div className="text-center">
+        <p className="badge border-none font-bold text-blue-500 bg-blue-50 p-4 text-md">
+            Education for Everyone
+        </p>
+    </div>
       <h1 className="p-4 text-4xl font-bold leading-none text-center">
-        Hear from students <br /> why you should chose StudyHive
+        Hear from students, <br /> why you should chose StudyHive!
       </h1>
       <Marquee gradientColor="rgb(248 251 253)" gradientWidth={200}>
         <div className=" w-full grid grid-cols-4">

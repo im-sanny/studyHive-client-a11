@@ -44,7 +44,7 @@ const Banner = () => {
                 data-aos="fade-left"
                 className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left"
               >
-                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl">
+                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-orange-400 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient">
                   Welcome to StudyHive, where learning meets innovation.
                 </h1>
                 <p className="mt-3 mb-3 text-lg lg:mx-0 mx-8">
@@ -82,7 +82,7 @@ const Banner = () => {
                 />
               </div>
               <div className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
-                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl">
+                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-green-400 via-blue-500 to-rose-400 text-transparent bg-clip-text animate-gradient">
                   Empower your mind with StudyHive's diverse learning tools.
                 </h1>
                 <p className="mt-3 mb-3 text-lg lg:mx-0 mx-8">
@@ -110,7 +110,7 @@ const Banner = () => {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10">
+          <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800 rounded-lg lg:p-10 ">
             <div className="container flex flex-col justify-center mx-auto py- lg:flex-row lg:justify-between">
               <div className="flex items-center justify-center lg:w-3/6 ">
                 <img
@@ -120,7 +120,7 @@ const Banner = () => {
                 />
               </div>
               <div className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
-                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl">
+                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-black via-blue-500 to-rose-400 text-transparent bg-clip-text animate-gradient">
                   Discover the joy of learning with StudyHive's resources.
                 </h1>
                 <p className="mt-3 mb-3 text-lg lg:mx-0 mx-8">
@@ -158,7 +158,7 @@ const Banner = () => {
                 />
               </div>
               <div className="lg:w-3/6 lg:h-[400px] py-5 flex flex-col justify-center text-center rounded-sm lg:text-left md:text-left">
-                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl">
+                <h1 className="text-5xl lg:mx-0 mx-3 font-bold leading-none sm:text-6xl bg-gradient-to-r from-cyan-400 via-blue-500 to-rose-400 text-transparent bg-clip-text animate-gradient">
                   Join StudyHive for an enriching educational journey today!
                 </h1>
                 <p className="mt-3 mb-3 text-lg lg:mx-0 mx-8">

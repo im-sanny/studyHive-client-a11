@@ -1,7 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
 import { MdAssignment } from "react-icons/md";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect } from "react";
 
 const Stats = () => {
+  const countAssignment = useMotionValue(0);
+  const roundedAssignment = useTransform(countAssignment, Math.round);
+
+  const countStudents = useMotionValue(0);
+  const roundedStudents = useTransform(countStudents, Math.round);
+
+  const countGrowth = useMotionValue(0);
+  const roundedGrowth = useTransform(countGrowth, Math.round);
+
+  const countBounceRate = useMotionValue(0);
+  const roundedBounceRate = useTransform(countBounceRate, Math.round);
+
+  useEffect(() => {
+    animate(countAssignment, 2000, { duration: 8 });
+    animate(countStudents, 7500, { duration: 8 });
+    animate(countGrowth, 172, { duration: 8 });
+    animate(countBounceRate, 17, { duration: 8 });
+  }, []);
   return (
     <div className="bg-cover bg-no-repeat my-10 rounded-lg bg-center">
       <section className="p-6 my-6 rounded-lg bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
@@ -11,8 +31,11 @@ const Stats = () => {
               <MdAssignment size={40} color="white"></MdAssignment>
             </div>
             <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none">2000</p>
-              <p className="capitalize">Assignments</p>
+              <p className="text-3xl font-semibold leading-none flex">
+                <motion.h1>{roundedAssignment}</motion.h1>+
+              </p>
+
+              <p className="capitalize">Assignment's</p>
             </div>
           </div>
           <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
@@ -30,7 +53,9 @@ const Stats = () => {
               </svg>
             </div>
             <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none">7500</p>
+              <motion.p className="text-3xl font-semibold leading-none">
+                {roundedStudents}
+              </motion.p>
               <p className="capitalize">Student's</p>
             </div>
           </div>
@@ -51,7 +76,9 @@ const Stats = () => {
               </svg>
             </div>
             <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none">172%</p>
+              <p className="text-3xl font-semibold leading-none flex justify-center">
+                <motion.p>{roundedGrowth}</motion.p>%
+              </p>
               <p className="capitalize">Growth</p>
             </div>
           </div>
@@ -67,7 +94,9 @@ const Stats = () => {
               </svg>
             </div>
             <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none">17%</p>
+              <p className="text-3xl font-semibold leading-none flex justify-center">
+                <motion.p>{roundedBounceRate}</motion.p>%
+              </p>
               <p className="capitalize">Bounce rate</p>
             </div>
           </div>
