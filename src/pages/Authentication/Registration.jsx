@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
@@ -8,8 +8,22 @@ const Registration = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state || "/";
-  const { user, setUser, createUser, signInWithGoogle, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    user,
+    setUser,
+    createUser,
+    signInWithGoogle,
+    updateUserProfile,
+    loading,
+  } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+
+  if (user || loading) return;
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -31,7 +45,7 @@ const Registration = () => {
       // user registration
       const result = await createUser(email, pass);
       await updateUserProfile(name, photo);
-      // optimistic ui update 
+      // optimistic ui update
       setUser({ ...result?.user, photoURL: photo, displayName: name });
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/jwt`,
