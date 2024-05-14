@@ -37,7 +37,7 @@ const Assignments = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/asnmnts`
+          `${import.meta.env.VITE_API_URL}/asnmnts`,{ withCredentials: true }
         );
         setAsnmnts(data);
       } catch (error) {
@@ -74,7 +74,7 @@ const Assignments = () => {
       if (result.isConfirmed) {
         try {
           // Send delete request to the server
-          await axios.delete(`${import.meta.env.VITE_API_URL}/asnmnt/${id}`);
+          await axios.delete(`${import.meta.env.VITE_API_URL}/asnmnt/${id}`, { withCredentials: true });
           // Remove the deleted assignment from the local state
           setAsnmnts((prevAsnmnts) =>
             prevAsnmnts.filter((asnmnt) => asnmnt._id !== id)

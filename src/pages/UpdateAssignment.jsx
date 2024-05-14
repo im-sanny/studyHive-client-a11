@@ -36,8 +36,7 @@ const UpdateAssignment = () => {
 
     try {
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/asnmnt/${_id}`,
-        update
+        `${import.meta.env.VITE_API_URL}/asnmnt/${_id}`, update, { withCredentials: true }
       );
       console.log(data);
       toast.success("Assignment Updated Successfully!");

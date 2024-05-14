@@ -48,8 +48,8 @@ const AssignmentDetails = () => {
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt`,
-        { withCredentials: true },
-        takeAsnmnt
+        takeAsnmnt,
+        { withCredentials: true }
       );
       console.log(data);
       document.getElementById("my_modal_5").close();
@@ -57,7 +57,8 @@ const AssignmentDetails = () => {
       toast.success("Assignment submitted successfully!");
       navigate("/mySubmit");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toast.error(error.message);
     }
   };
   useEffect(() => {

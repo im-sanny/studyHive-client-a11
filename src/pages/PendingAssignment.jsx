@@ -30,7 +30,7 @@ const PendingAssignment = () => {
     try {
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt/${id}`,
-        { status: "Completed", obtainedMark: finalMark, feedback: feedback }
+        { status: "Completed", obtainedMark: finalMark, feedback: feedback },{ withCredentials: true }
       );
       setSubAsn((prevSubAsn) => prevSubAsn.filter((asn) => asn._id !== id));
       toast.success("Assignment marking successful");

@@ -39,11 +39,12 @@ const CreateAssignment = () => {
         photo: user?.photoURL,
       },
     };
-    console.log(cAssignmentData);
+    // console.log(cAssignmentData);
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/asnmnts`,
-        cAssignmentData
+        cAssignmentData,
+        { withCredentials: true }
       );
       toast.success("Assignment created successfully");
       console.log(data);
