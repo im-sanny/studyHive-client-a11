@@ -81,7 +81,7 @@ const PendingAssignment = () => {
                     <p
                       className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
                         assignment.status === "Pending" &&
-                        "bg-yellow-100/60 text-yellow-500"
+                        "bg-yellow-100 text-yellow-700"
                       } ${
                         assignment.status === "In Progress" &&
                         "bg-blue-100/60 text-blue-500"
@@ -138,7 +138,7 @@ const PendingAssignment = () => {
                       })
                     }
                   >
-                    <button className="btn btn-sm">Give Marks</button>
+                    <button className="btn btn-sm ml-2">Give Marks</button>
                   </td>
                 </tr>
               ))}

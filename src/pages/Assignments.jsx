@@ -93,8 +93,8 @@ const Assignments = () => {
     <>
       <div>
         <div className="flex justify-center items-center">
-          <div className="mt-4 bg-slate-400 p-2 rounded-md">
-            <label htmlFor="filter" className="mr-2 text-gray-700 text-2xl">
+          <div className="mt-4 bg-slate-300 p-2 rounded-md">
+            <label htmlFor="filter" className="mr-2 text-gray-700 lg:text-2xl ">
               Filter by Difficulty Level:
             </label>
             <select
@@ -120,8 +120,8 @@ const Assignments = () => {
             </span>
           </div>
 
-          <div className="overflow-x-auto rounded-lg bg-gradient-to-br from-blue-500 to-blue-400">
-            <table className="min-w-full divide-y divide-gray-200">
+          <div className="overflow-x-auto rounded-lg border-2 border-teal-200">
+            <table className="min-w-full divide-y divide-x divide-gray-200">
               <thead className="bg-gradient-to-br from-blue-500 to-blue-300">
                 <tr>
                   <th className="py-3.5 px-4 text-sm text-left rtl:text-right text-gray-800 font-bold">
@@ -150,7 +150,7 @@ const Assignments = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y border-2 divide-gray-300 border-b border-opacity-20 border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50">
+              <tbody className="divide-y divide-green-300">
                 {filteredAsnmnts.map((asnmnt) => (
                   <tr key={asnmnt._id}>
                     <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">

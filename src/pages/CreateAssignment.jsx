@@ -60,15 +60,15 @@ const CreateAssignment = () => {
   return (
     <div className="bg-[url('https://i.ibb.co/svVbpj0/1849-R0l-VIEp-FTi-A3-MDgt-NTE.jpg')] bg-cover bg-no-repeat p-5 my-10 rounded-lg bg-center">
       <div className="flex justify-center items-center my-10">
-        <section className=" p-5 bg-white rounded-md shadow-md w-full lg:w-auto">
-          <h2 className="text-lg font-semibold text-gray-700 capitalize ">
+        <section className=" p-5 bg-base-100 rounded-md shadow-md w-full max-w-3xl">
+          <h2 className="text-2xl text-center font-semibold text-blue-400 capitalize ">
             Create a assignment
           </h2>
 
           <form onSubmit={handleFormSubmission}>
-            <div className="grid  gap-6 mt-4 grid-cols-2">
+            <div className="grid gap-6 mt-4 grid-cols-2">
               <div>
-                <label className="text-gray-700 " htmlFor="title">
+                <label className=" " htmlFor="title">
                   Assignment Title
                 </label>
                 <input
@@ -77,12 +77,12 @@ const CreateAssignment = () => {
                   type="text"
                   placeholder="title"
                   required
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
               <div>
-                <label className="text-gray-700 " htmlFor="emailAddress">
+                <label className=" " htmlFor="emailAddress">
                   Email Address
                 </label>
                 <input
@@ -92,12 +92,12 @@ const CreateAssignment = () => {
                   defaultValue={user?.email}
                   disabled
                   required
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
               <div>
-                <label className="text-gray-700 " htmlFor="imageURL">
+                <label className=" " htmlFor="imageURL">
                   Assignment Image
                 </label>
                 <input
@@ -106,11 +106,11 @@ const CreateAssignment = () => {
                   name="imageURL"
                   placeholder="imageURL"
                   required
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div className="flex flex-col gap-2 ">
-                <label className="text-gray-700">Deadline</label>
+                <label className="">Deadline</label>
                 <DatePicker
                   className="border p-2 rounded-md w-full"
                   selected={startDate}
@@ -119,7 +119,7 @@ const CreateAssignment = () => {
               </div>
 
               <div className="flex flex-col gap-2 ">
-                <label className="text-gray-700 " htmlFor="category">
+                <label className=" " htmlFor="category">
                   Assignment Difficulty
                 </label>
                 <select
@@ -134,7 +134,7 @@ const CreateAssignment = () => {
                 </select>
               </div>
               <div>
-                <label className="text-gray-700 " htmlFor="marks">
+                <label className=" " htmlFor="marks">
                   Marks
                 </label>
                 <input
@@ -143,7 +143,7 @@ const CreateAssignment = () => {
                   type="number"
                   required
                   placeholder="marks"
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                   min="100"
                   max="100"
                   defaultValue="100"
@@ -152,11 +152,11 @@ const CreateAssignment = () => {
               </div>
             </div>
             <div className="flex flex-col gap-2 mt-4">
-              <label className="text-gray-700 " htmlFor="description">
+              <label className=" " htmlFor="description">
                 Description
               </label>
               <textarea
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2  bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 name="description"
                 id="description"
                 required
@@ -164,8 +164,8 @@ const CreateAssignment = () => {
               ></textarea>
             </div>
             <div className="flex justify-end mt-6">
-              <button className="px-8 py-2.5 w-full leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-500 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
-                Create
+              <button className="px-8 py-2.5 w-full leading-5 text-blue-600 font-bold transition-colors duration-300 transhtmlForm bg-blue-100 rounded-md hover:bg-cyan-100 focus:outline-none focus:bg-gray-600">
+                Create Assignment
               </button>
             </div>
           </form>

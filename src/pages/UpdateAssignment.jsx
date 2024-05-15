@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const UpdateAssignment = () => {
   const asnmnt = useLoaderData();
-  console.log(asnmnt);
+  // console.log(asnmnt);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
@@ -36,7 +36,9 @@ const UpdateAssignment = () => {
 
     try {
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/asnmnt/${_id}`, update, { withCredentials: true }
+        `${import.meta.env.VITE_API_URL}/asnmnt/${_id}`,
+        update,
+        { withCredentials: true }
       );
       console.log(data);
       toast.success("Assignment Updated Successfully!");
@@ -50,13 +52,13 @@ const UpdateAssignment = () => {
   return (
     <div className="bg-[url('https://i.ibb.co/svVbpj0/1849-R0l-VIEp-FTi-A3-MDgt-NTE.jpg')] bg-cover bg-no-repeat p-5 my-10 rounded-lg bg-center">
       <div className="flex justify-center items-center my-10">
-        <section className=" p-5 bg-white rounded-md shadow-md w-full lg:w-auto">
-          <h2 className="text-lg font-semibold text-gray-700 capitalize ">
+        <section className="p-5 card-body max-w-3xl my-5 bg-blue-50 rounded-md shadow-md w-full lg:w-auto">
+          <h2 className="text-lg font-semibold text-center text-gray-700 capitalize ">
             Update a assignment
           </h2>
 
           <form onSubmit={handleFormUpdate}>
-            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div className="grid gap-6 mt-4 grid-cols-2">
               <div>
                 <label className="text-gray-700 " htmlFor="title">
                   Assignment Title
@@ -66,6 +68,7 @@ const UpdateAssignment = () => {
                   name="title"
                   type="text"
                   placeholder={title}
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -93,6 +96,7 @@ const UpdateAssignment = () => {
                   type="link"
                   name="imageURL"
                   placeholder={imageURL}
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -113,6 +117,7 @@ const UpdateAssignment = () => {
                   name="difficulty"
                   id="difficulty"
                   defaultValue={difficulty}
+                  required
                   className="border p-2 rounded-md"
                 >
                   <option value="easy">Easy</option>
@@ -129,6 +134,8 @@ const UpdateAssignment = () => {
                   name="marks"
                   type="number"
                   placeholder={marks}
+                  defaultValue={100}
+                  readOnly
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
@@ -142,6 +149,7 @@ const UpdateAssignment = () => {
                 name="description"
                 id="description"
                 placeholder={description}
+                required
               ></textarea>
             </div>
             <div className="flex justify-end mt-6">
