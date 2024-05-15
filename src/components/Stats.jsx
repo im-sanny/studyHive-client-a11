@@ -18,9 +18,9 @@ const Stats = () => {
 
   useEffect(() => {
     animate(countAssignment, 2000, { duration: 8 });
-    animate(countStudents, 7500, { duration: 8 });
-    animate(countGrowth, 172, { duration: 8 });
-    animate(countBounceRate, 17, { duration: 8 });
+    animate(countStudents, 7500, { duration: 10 });
+    animate(countGrowth, 172, { duration: 4 });
+    animate(countBounceRate, 17, { duration: 2 });
   }, []);
   return (
     <div className="bg-cover bg-no-repeat my-10 rounded-lg bg-center">

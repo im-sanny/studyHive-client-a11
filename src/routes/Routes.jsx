@@ -11,6 +11,8 @@ import UpdateAssignment from "../pages/UpdateAssignment";
 import PrivateRoutes from "./PrivateRoutes";
 import MySubmittedAsn from "../pages/MySubmittedAsn";
 import PendingAssignment from "../pages/PendingAssignment";
+import AllSubmittedAsn from "../pages/AllSubmittedAsn";
+
 
 const router = createBrowserRouter([
   {
@@ -51,7 +53,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`,{ credentials: "include" }),
+          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/update/:id",
@@ -61,7 +65,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`,{ credentials: "include" }),
+          fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/mySubmit",
@@ -76,6 +82,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <PendingAssignment></PendingAssignment>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/allSubmittedAsn",
+        element: (
+          <PrivateRoutes>
+           <AllSubmittedAsn></AllSubmittedAsn>
           </PrivateRoutes>
         ),
       },

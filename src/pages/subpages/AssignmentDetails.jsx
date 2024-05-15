@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 const AssignmentDetails = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
 
@@ -15,7 +16,7 @@ const AssignmentDetails = () => {
 
   const { description, difficulty, deadline, title, marks, student } =
     asnmnt || {};
-
+console.log(asnmnt);
   const handleFromSubmission = async (e) => {
     e.preventDefault();
     if (user?.email === student?.email) {

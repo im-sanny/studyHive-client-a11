@@ -74,7 +74,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-base-300 fixed top-0 z-[100]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -159,11 +159,16 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36 rounded-md"
+              className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36 rounded-lg"
             >
               <NavLink to={"/mySubmit"}>
                 <li>
                   <a>My Assignment's</a>
+                </li>
+              </NavLink>
+              <NavLink to={'/allSubmittedAsn'}>
+                <li>
+                  <a>All Submitted Assignment</a>
                 </li>
               </NavLink>
               <li>
