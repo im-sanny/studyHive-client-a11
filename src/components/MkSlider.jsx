@@ -25,10 +25,10 @@ const MkSlider = () => {
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
                 </svg>
-                StudyHive has transformed my learning experience. The platform's
-                intuitive interface and diverse resources have helped me excel
-                in my studies. I highly recommend it to anyone looking to boost
-                their academic performance
+                StudyHive has transformed my learning experience and my carer.
+                The platform's intuitive interface and diverse resources have
+                helped me excel in my studies. I highly recommend it to anyone who's
+                looking to boost their academic performance
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -65,7 +65,7 @@ const MkSlider = () => {
                 Choosing StudyHive was one of the best decisions I made for my
                 education. The supportive community, engaging content, and
                 personalized approach have made learning enjoyable and
-                effective. I'm grateful for this invaluable resource!
+                effective. I'm grateful for this invaluable resource, thanks!
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
