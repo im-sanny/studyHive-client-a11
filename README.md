@@ -23,6 +23,5 @@ Welcome to StudyHive, a dynamic online group-study platform designed to foster c
 
 1. **Spinner for Loading State**: Added a spinner animation to indicate loading state.
 2. **Framer Motion Animation**: Utilized Framer Motion library to implement animations.
-3. **Tanstack Query Mutations**: Explored and implemented Tanstack query mutations in the API.
 
 Thank you for considering StudyHive for your online group-study needs!

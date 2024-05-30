@@ -236,7 +236,7 @@ const Registration = () => {
         <div
           className="hidden bg-contain bg-no-repeat bg-center lg:block lg:w-1/2"
           style={{
-            backgroundImage: `url('https://i.ibb.co/BfNQDqv/6368592.jpg')`,
+            backgroundImage: `url('https://i.ibb.co/23hscXC/Authentication-6.png')`,
           }}
         ></div>
       </div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { FaEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -11,12 +11,11 @@ import { AuthContext } from "../provider/AuthProvider";
 const Assignments = () => {
   const { user } = useContext(AuthContext);
   const [asnmnts, setAsnmnts] = useState([]);
-  const asnmntData = useLoaderData();
-  // console.log(asnmnts);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setitemsPerPage] = useState(5);
 
-  useEffect(() => {
-    setAsnmnts(asnmntData);
-  }, [asnmntData]);
+  // console.log(asnmnts);
 
   const [filterValue, setFilterValue] = useState("all");
   const handleFilterChange = (e) => {
@@ -33,19 +32,48 @@ const Assignments = () => {
     hard: "bg-red-200 text-red-800",
   };
 
+  // Fetch assignments
   useEffect(() => {
-    const getData = async () => {
+    const getAssignments = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/asnmnts`,{ withCredentials: true }
+          `${
+            import.meta.env.VITE_API_URL
+          }/asnmnts?page=${currentPage}&size=${itemsPerPage}`,
+          { withCredentials: true }
         );
         setAsnmnts(data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    getData();
+    getAssignments();
+  }, [currentPage, itemsPerPage]);
+
+  // Fetch count of assignments
+  useEffect(() => {
+    const getCount = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/assignment-count`,
+          { withCredentials: true }
+        );
+        setCount(data.count);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getCount();
   }, []);
+
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
+
+  // Handle pagination button
+  const handlePaginationButton = (value) => {
+    console.log(value);
+    setCurrentPage(value);
+  };
 
   const handleDelete = async (id) => {
     const assignmentToDelete = asnmnts.find((asnmnt) => asnmnt._id === id);
@@ -74,7 +102,9 @@ const Assignments = () => {
       if (result.isConfirmed) {
         try {
           // Send delete request to the server
-          await axios.delete(`${import.meta.env.VITE_API_URL}/asnmnt/${id}`, { withCredentials: true });
+          await axios.delete(`${import.meta.env.VITE_API_URL}/asnmnt/${id}`, {
+            withCredentials: true,
+          });
           // Remove the deleted assignment from the local state
           setAsnmnts((prevAsnmnts) =>
             prevAsnmnts.filter((asnmnt) => asnmnt._id !== id)
@@ -91,6 +121,57 @@ const Assignments = () => {
 
   return (
     <>
+      <div>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
+          <div>
+            <select
+              name="category"
+              id="category"
+              className="border p-4 rounded-lg"
+            >
+              <option value="">Filter By Difficulty Level</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+
+          <form>
+            <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+              <input
+                className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+                type="text"
+                name="search"
+                placeholder="Enter Assignment Title"
+                aria-label="Enter Assignment Title"
+              />
+
+              <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+                Search
+              </button>
+            </div>
+          </form>
+          <div>
+            <select
+              name="category"
+              id="category"
+              className="border p-4 rounded-md"
+            >
+              <option value="">Sort By Deadline</option>
+              <option value="dsc">Descending Order</option>
+              <option value="asc">Ascending Order</option>
+            </select>
+          </div>
+          <button className="btn">Reset</button>
+        </div>
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {/* {jobs.map(job => (
+            <JobCard key={job._id} job={job} />
+          ))} */}
+        </div>
+      </div>
+
+      {/* main */}
       <div>
         <div className="flex justify-center items-center">
           <div className="mt-4 bg-slate-300 p-2 rounded-md">
@@ -216,6 +297,70 @@ const Assignments = () => {
             </table>
           </div>
         </section>
+      </div>
+      {/* pagination */}
+      <div className="flex justify-center mb-10">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => handlePaginationButton(currentPage - 1)}
+          className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white"
+        >
+          <div className="flex items-center -mx-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 mx-1 rtl:-scale-x-100"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M7 16l-4-4m0 0l4-4m-4 4h18"
+              />
+            </svg>
+
+            <span className="mx-1">previous</span>
+          </div>
+        </button>
+
+        {pages.map((btnNum) => (
+          <button
+            onClick={() => handlePaginationButton(btnNum)}
+            key={btnNum}
+            className={`hidden ${
+              currentPage === btnNum ? "bg-blue-500 text-white" : ""
+            } px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
+          >
+            {btnNum}
+          </button>
+        ))}
+
+        <button
+          disabled={currentPage === numberOfPages}
+          onClick={() => handlePaginationButton(currentPage + 1)}
+          className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+        >
+          <div className="flex items-center -mx-1">
+            <span className="mx-1">Next</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 mx-1 rtl:-scale-x-100"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </div>
+        </button>
       </div>
     </>
   );
