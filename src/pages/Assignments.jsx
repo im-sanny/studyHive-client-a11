@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useContext } from "react";
 import { FaEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
@@ -14,6 +15,7 @@ const Assignments = () => {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(5);
+  const [filter, setFilter] = useState("");
 
   // console.log(asnmnts);
 
@@ -31,7 +33,7 @@ const Assignments = () => {
     medium: "bg-yellow-200 text-yellow-800",
     hard: "bg-red-200 text-red-800",
   };
-
+  
   // Fetch assignments
   useEffect(() => {
     const getAssignments = async () => {
@@ -39,7 +41,7 @@ const Assignments = () => {
         const { data } = await axios.get(
           `${
             import.meta.env.VITE_API_URL
-          }/asnmnts?page=${currentPage}&size=${itemsPerPage}`,
+          }/asnmnts?page=${currentPage}&size=${itemsPerPage}&filter=${filter}`,
           { withCredentials: true }
         );
         setAsnmnts(data);
@@ -48,7 +50,7 @@ const Assignments = () => {
       }
     };
     getAssignments();
-  }, [currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, filter]);
 
   // Fetch count of assignments
   useEffect(() => {
@@ -121,10 +123,12 @@ const Assignments = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
           <div>
             <select
+              onChange={(e) => setFilter(e.target.value)}
+              value={filter}
               name="category"
               id="category"
               className="border p-4 rounded-lg"
@@ -165,11 +169,11 @@ const Assignments = () => {
           <button className="btn">Reset</button>
         </div>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {/* {jobs.map(job => (
+          {jobs.map(job => (
             <JobCard key={job._id} job={job} />
-          ))} */}
+          ))}
         </div>
-      </div>
+      </div> */}
 
       {/* main */}
       <div>
