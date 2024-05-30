@@ -6,17 +6,18 @@ import toast from "react-hot-toast";
 
 const Contact = () => {
   const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm("service_ast14f7", "template_sdkoue5", form.current, {
-        publicKey: "iKl1QgFgeS2Tn53SFp4Oa",
+        publicKey: "W-3scYNsYYELOYrTr",
       })
       .then(
         () => {
           console.log("SUCCESS!");
-          toast.success("Mail sent Successfully");
+          toast.success("Message sent Successfully");
+          e.target.reset();
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -53,6 +54,7 @@ const Contact = () => {
                 type="text"
                 name="user_name"
                 placeholder=""
+                required
                 className="w-full p-3 rounded dark:bg-gray-100"
               />
             </div>
@@ -64,6 +66,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 name="user_email"
+                required
                 className="w-full p-3 rounded dark:bg-gray-100"
               />
             </div>
@@ -75,6 +78,7 @@ const Contact = () => {
                 id="message"
                 rows="3"
                 name="message"
+                required
                 className="w-full p-3 rounded dark:bg-gray-100"
                 data-gramm="false"
                 wt-ignore-input="true"
