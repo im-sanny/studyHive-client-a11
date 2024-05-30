@@ -30,7 +30,7 @@ const Footer = () => {
               </p>
               <p className="flex lg:justify-start justify-center items-center gap-1 lg:text-left text-center lg:pr-5">
                 <FaPhoneSquareAlt size={20} />
-                01907507@@
+                +880190750769
               </p>
             </div>
           </div>
