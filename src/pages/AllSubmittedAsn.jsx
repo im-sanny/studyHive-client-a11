@@ -19,7 +19,7 @@ const AllSubmittedAsn = () => {
     };
     getData();
   }, []);
-  console.log(allSubmit);
+  // console.log(allSubmit);
   return (
     <>
       <div className="container p-2 mx-auto sm:p-4">

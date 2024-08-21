@@ -28,13 +28,15 @@ const PendingAssignment = () => {
     }
 
     try {
+      // eslint-disable-next-line no-unused-vars
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt/${id}`,
-        { status: "Completed", obtainedMark: finalMark, feedback: feedback },{ withCredentials: true }
+        { status: "Completed", obtainedMark: finalMark, feedback: feedback },
+        { withCredentials: true }
       );
       setSubAsn((prevSubAsn) => prevSubAsn.filter((asn) => asn._id !== id));
       toast.success("Assignment marking successful");
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error("Error marking assignment:", error);
       toast.error("Failed to mark assignment. Please try again later.");
