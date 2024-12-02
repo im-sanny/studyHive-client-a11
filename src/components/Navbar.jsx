@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
-import "animate.css";
+import { useContext, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import 'animate.css';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -10,31 +10,31 @@ const Navbar = () => {
   const [theme, setTheme] = useState();
 
   useEffect(() => {
-    const localTheme = localStorage.getItem("theme");
+    const localTheme = localStorage.getItem('theme');
     if (localTheme) {
       setTheme(localTheme);
     } else {
       // Default theme if no preference is found
-      localStorage.setItem("theme", theme);
+      localStorage.setItem('theme', theme);
     }
     document
-      .querySelector("html")
-      .setAttribute("data-theme", localTheme || theme);
+      .querySelector('html')
+      .setAttribute('data-theme', localTheme || theme);
   }, []);
 
   const handleToggle = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.querySelector("html").setAttribute("data-theme", newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.querySelector('html').setAttribute('data-theme', newTheme);
   };
 
   const navLinks = (
     <>
       <NavLink
-        to={"/"}
+        to={'/'}
         className={({ isActive }) =>
-          isActive ? "text-primary font-bold outline rounded-lg" : "font-bold"
+          isActive ? 'text-primary font-bold outline rounded-lg' : 'font-bold'
         }
       >
         <li>
@@ -42,9 +42,9 @@ const Navbar = () => {
         </li>
       </NavLink>
       <NavLink
-        to={"/assignments"}
+        to={'/assignments'}
         className={({ isActive }) =>
-          isActive ? "text-primary font-bold outline rounded-lg" : "font-bold"
+          isActive ? 'text-primary font-bold outline rounded-lg' : 'font-bold'
         }
       >
         <li>
@@ -52,9 +52,9 @@ const Navbar = () => {
         </li>
       </NavLink>
       <NavLink
-        to={"/createAssignment"}
+        to={'/createAssignment'}
         className={({ isActive }) =>
-          isActive ? "text-primary font-bold outline rounded-lg" : "font-bold"
+          isActive ? 'text-primary font-bold outline rounded-lg' : 'font-bold'
         }
       >
         <li>
@@ -62,9 +62,9 @@ const Navbar = () => {
         </li>
       </NavLink>
       <NavLink
-        to={"/pendingAssignment"}
+        to={'/pendingAssignment'}
         className={({ isActive }) =>
-          isActive ? "text-primary font-bold outline rounded-lg" : "font-bold"
+          isActive ? 'text-primary font-bold outline rounded-lg' : 'font-bold'
         }
       >
         <li>
@@ -74,7 +74,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-300 ">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -124,7 +124,7 @@ const Navbar = () => {
 
           {/* sun icon */}
           <svg
-            className="swap-off fill-current w-10 h-10"
+            className="swap-off fill-current w-8 h-8"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -133,7 +133,7 @@ const Navbar = () => {
 
           {/* moon icon */}
           <svg
-            className="swap-on fill-current w-10 h-10"
+            className="swap-on fill-current w-8 h-8"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -141,9 +141,11 @@ const Navbar = () => {
           </svg>
         </label>
         {!user && (
-          <Link to={"/login"}>
-            <a className="btn">Login</a>
-          </Link>
+          <NavLink to={'/login'}>
+            <a className="btn-ghost hover:bg-violet-400 p-2 font-bold rounded-lg">
+              Login
+            </a>
+          </NavLink>
         )}
         {user && (
           <div className="dropdown">
@@ -161,7 +163,7 @@ const Navbar = () => {
               tabIndex={0}
               className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-circle right-0 w-36 rounded-lg"
             >
-              <NavLink to={"/mySubmit"}>
+              <NavLink to={'/mySubmit'}>
                 <li>
                   <a>My Assignment's</a>
                 </li>
