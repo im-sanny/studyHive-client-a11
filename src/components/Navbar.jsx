@@ -93,21 +93,23 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {navLinks}
-          </ul>
+          <div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navLinks}
+            </ul>
+          </div>
         </div>
-        <button className="btn btn-ghost text-xl lg:-ml-0 -ml-5 animate__animated animate__backInDown">
+        <div className="flex justify-center items-center gap-2 text-xl font-bold animate__animated animate__backInDown">
           <img
             src="https://i.ibb.co/7tw5yvk/study-group.png"
             className="w-10 "
             alt=""
           />
           StudyHive
-        </button>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
