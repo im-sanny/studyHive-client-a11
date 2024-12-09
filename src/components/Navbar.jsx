@@ -144,7 +144,7 @@ const Navbar = () => {
         </label>
         {!user && (
           <NavLink to={'/login'}>
-            <a className="btn-ghost hover:bg-violet-400 p-2 font-bold rounded-lg">
+            <a className="btn-ghost hover:border-violet-400 p-2 font-bold rounded-lg">
               Login
             </a>
           </NavLink>
