@@ -81,10 +81,10 @@ const Stats = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <h2 className="text-4xl font-bold mb-4">
           StudyHive Insights
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="max-w-2xl mx-auto">
           Real-time analytics and performance metrics of our learning platform
         </p>
       </div>

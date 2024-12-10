@@ -1,15 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 const StudentTeam = () => {
   return (
-    <div className="mt-20">
-          <div className="space-y-4 mx-auto text-center">
-            <h3 className="text-2xl font-bold leading-none sm:text-5xl">
-              Bright student's of StudyHive
-            </h3>
-            <p className="max-w-2xl mx-auto">
-            In StudyHive, bright students thrive, fueled by curiosity and ambition. They engage, dissect, and conquer challenges, shaping a future of innovation.
-            </p>
-          </div>
+    <div className="mt-5">
+      <div className="space-y-4 mx-auto text-center">
+        <h3 className="text-2xl font-bold leading-none sm:text-5xl">
+          Bright student's of StudyHive
+        </h3>
+        <p className="max-w-2xl mx-auto">
+          In StudyHive, bright students thrive, fueled by curiosity and
+          ambition. They engage, dissect, and conquer challenges, shaping a
+          future of innovation.
+        </p>
+      </div>
       <section className="py-6 ">
         <div className="container p-4 mx-auto space-y-16 sm:p-10">
           <div className="grid w-full grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
@@ -21,12 +23,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Sebastian</h4>
-                <p className="text-sm">
-                Google
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Google</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -37,12 +34,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Michael Smith</h4>
-                <p className="text-sm">
-                Apple
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Apple</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -53,12 +45,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Olivia Brown</h4>
-                <p className="text-sm">
-                Microsoft
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Microsoft</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -69,15 +56,9 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">S Davis</h4>
-                <p className="text-sm">
-               Facebook
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Facebook</p>
               </div>
             </div>
-            {/*  */}
             <div className="space-y-4">
               <img
                 alt=""
@@ -86,12 +67,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">John Doe</h4>
-                <p className="text-sm">
-                Google
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Google</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -102,12 +78,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Selena</h4>
-                <p className="text-sm">
-                Coca-Cola
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Coca-Cola</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -118,12 +89,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Michael</h4>
-                <p className="text-sm">
-              Uber
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Uber</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -134,12 +100,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Jamie</h4>
-                <p className="text-sm">
-                Tesla
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Tesla</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -150,12 +111,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Roger</h4>
-                <p className="text-sm">
-               Netflix
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Netflix</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -166,12 +122,7 @@ const StudentTeam = () => {
               />
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-semibold">Jesica</h4>
-                <p className="text-sm text-gray-400 dark:text-gray-600">
-                Airbnb
-                </p>
-                <div className="flex mt-2 space-x-2">
-                  {/* later */}
-                </div>
+                <p className="text-sm">Airbnb</p>
               </div>
             </div>
           </div>
