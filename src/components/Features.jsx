@@ -1,153 +1,144 @@
-/* eslint-disable react/no-unescaped-entities */
-import AOS from "aos";
-import "aos/dist/aos.css";
-AOS.init();
+/* eslint-disable react/prop-types */
+import { motion } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import {
+  ClipboardListIcon,
+  FilterIcon,
+  FolderEditIcon,
+  AwardIcon,
+} from 'lucide-react';
+AOS.init({
+  duration: 800, // Reduced duration for smoother effect
+  easing: 'ease-in-out', // Smoother easing function
+  once: true, // Animate only once
+  offset: 100, // Trigger animation when element is 100px in view
+  disable: false, // Enable AOS on all devices
+  startEvent: 'DOMContentLoaded', // Trigger on page load
+});
+
+const featureData = [
+  {
+    icon: ClipboardListIcon,
+    title: 'Create Assignments Easily',
+    description:
+      'Seamlessly create assignments with intuitive fields including title, description, marks, difficulty level, and due date.',
+    color: 'bg-rose-50',
+    textColor: 'text-rose-400',
+    badges: [
+      'Create Assignments',
+      'Assignment Management',
+      'Task Distribution',
+      'Due Date Tracking',
+    ],
+    aos: 'fade-right',
+    duration: 2000,
+  },
+  {
+    icon: FilterIcon,
+    title: 'Explore and Filter Assignments',
+    description:
+      'Browse through assignments created by users and filter them based on difficulty levels. Efficiently organize and find tasks.',
+    color: 'bg-pink-50',
+    textColor: 'text-pink-400',
+    badges: [
+      'View Assignments',
+      'Filter by Difficulty',
+      'Task Organization',
+      'Assignment Catalog',
+    ],
+    aos: 'fade-up',
+    duration: 1500,
+  },
+  {
+    icon: FolderEditIcon,
+    title: 'Manage Your Assignments',
+    description:
+      'Empower users to update or delete their assignments effortlessly. Maintain task accuracy and relevance.',
+    color: 'bg-blue-50',
+    textColor: 'text-blue-400',
+    badges: [
+      'Update Assignments',
+      'Delete Assignments',
+      'User-Specific Tasks',
+      'Task Modification',
+    ],
+    aos: 'fade-down',
+    duration: 1500,
+  },
+  {
+    icon: AwardIcon,
+    title: 'Submit and Evaluate Assignments',
+    description:
+      'Submit assignments with ease and receive timely evaluation and feedback. Streamline the marking and grading process.',
+    color: 'bg-green-50',
+    textColor: 'text-green-400',
+    badges: [
+      'Submit Assignments',
+      'Feedback Provision',
+      'Submission Status',
+      'Marking and Grading',
+    ],
+    aos: 'fade-left',
+    duration: 2000,
+  },
+];
+
+const FeatureCard = ({
+  icon: Icon,
+  title,
+  description,
+  color,
+  textColor,
+  badges,
+  aos,
+  duration,
+}) => (
+  <motion.div
+    data-aos={aos}
+    data-aos-duration={duration}
+    data-aos-easing="ease-in-out" // Specific easing for each card
+    whileHover={{
+      scale: 1.05,
+      transition: { duration: 0.3 }, // Smooth hover effect
+    }}
+    className={`${color} rounded-lg p-6 flex flex-col justify-between h-full shadow-md hover:shadow-lg transition-all duration-300`}
+  >
+    <div className="flex flex-col items-start">
+      <div className="mb-4">
+        <Icon className={`w-10 h-10 ${textColor}`} />
+      </div>
+      <h3 className="text-xl font-semibold text-gray-800 mb-3">{title}</h3>
+      <p className="text-sm text-gray-600 mb-4 flex-grow">{description}</p>
+    </div>
+
+    <div className="flex flex-wrap gap-2 mt-auto">
+      {badges.map((badge, index) => (
+        <span key={index} className="px-2 py-1 text-xs rounded-full badge">
+          {badge}
+        </span>
+      ))}
+    </div>
+  </motion.div>
+);
 
 const Features = () => {
   return (
-    <div className="mt-20">
-      <div className="text-center mt-5">
-        <h2 className="badge uppercase p-4 bg-rose-50 text-rose-400">
+    <div className="container mx-auto px-4 lg:px-0 py-1">
+      <div className="text-center lg:mb-12">
+        <p className="badge uppercase p-3 bg-rose-50 text-rose-400">
           StudyHive Features
-        </h2>
-        <h1 className="text-5xl max-w-3xl mx-auto font-bold mt-5 mb-10">
-          Check out StudyHive's helpful features
+        </p>
+
+        <h1 className="text-4xl max-w-3xl mx-auto font-bold my-6">
+          Powerful Tools for Learning
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-        <div
-          data-aos="fade-right"
-          data-aos-duration="2000"
-          className="w-full max-w-sm bg-[#fff6b5] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
-        >
-          <div className="">
-            <img
-              src="https://i.ibb.co/zXwVygq/vecteezy-white-clipboard-task-management-todo-check-list-efficient-9315274.png"
-              alt=""
-              className="h-24"
-            />
-          </div>
-
-          <div>
-            <h1 className="mt-2 text-lg  text-gray-800 font-bold">
-              Create Assignments Easily
-            </h1>
-
-            <p className="mt-2 text-sm text-gray-400 font-semibold flex-grow">
-              Seamlessly create assignments for all users with intuitive fields
-              such as title, description, marks, difficulty level, and due date
-              selection. Simplify task allocation and management.
-            </p>
-
-            <div className="space-y-1 mx-auto pb-4 mt-4">
-              <p className="badge mr-1 p-3">Create Assignments</p>
-              <p className="badge p-3">Assignment Management</p>
-              <p className="badge mr-1 p-3">Task Distribution</p>
-              <p className="badge p-3">Due Date Tracking</p>
-              <p className="badge p-3">Difficulty Level Selection</p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          data-aos="fade-up"
-          data-aos-duration="1500"
-          data-aos-easing="linear"
-          className="w-full max-w-sm bg-[#F8CAED] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
-        >
-          <div className="flex items-center">
-            <img
-              src="https://i.ibb.co/fkF9BFS/vecteezy-white-clipboard-task-management-todo-check-list-efficient-8879451.png"
-              alt=""
-              className="h-24"
-            />
-          </div>
-
-          <div>
-            <h1 className="mt-2 text-lg  text-gray-800 font-bold">
-              Explore and Filter Assignments
-            </h1>
-
-            <p className="mt-2 text-sm text-gray-500 font-semibold">
-              Easily browse through all assignments created by users and filter
-              them based on difficulty levels. Efficiently organize tasks and
-              find assignments suited to your preferences.
-            </p>
-            <div className="space-y-1 mx-auto pb-4 mt-4">
-              <p className="badge mr-1 p-3">View Assignments</p>
-              <p className="badge p-3">Filter by Difficulty</p>
-              <p className="badge mr-1 p-3">Task Organization</p>
-              <p className="badge p-3">Assignment Catalog</p>
-              <p className="badge p-3">Assignment Exploration</p>
-            </div>
-          </div>
-        </div>
-        <div
-          data-aos="fade-down"
-          data-aos-duration="1500"
-          data-aos-easing="linear"
-          className="w-full max-w-sm bg-[#E0F7FF] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
-        >
-          <div className="flex items-center">
-            <img
-              src="https://i.ibb.co/BLCvSvw/vecteezy-3d-folder-and-paper-for-management-file-document-efficient-17218009.png"
-              alt=""
-              className="h-24"
-            />
-          </div>
-
-          <div>
-            <h1 className="mt-2 text-lg  text-gray-800 font-bold">
-              Manage Your Assignments Effectively
-            </h1>
-
-            <p className="mt-2 text-sm text-gray-400 font-semibold">
-              Empower users to update or delete their assignments effortlessly.
-              Stay in control of tasks with user-specific management options,
-              ensuring task accuracy and relevance.
-            </p>
-            <div className="space-y-1 mx-auto pb-4 mt-4">
-              <p className="badge mr-1 p-3">Update Assignments</p>
-              <p className="badge p-3">Delete Assignments</p>
-              <p className="badge mr-1 p-3">User-Specific Tasks</p>
-              <p className="badge p-3">Task Modification</p>
-              <p className="badge p-3">Task Deletion</p>
-            </div>
-          </div>
-        </div>
-        <div
-          data-aos="fade-left"
-          data-aos-duration="2000"
-          className="w-full max-w-sm bg-[#B8FFD9] rounded-md shadow-md hover:scale-[1.05] transition-all mb-10 p-5 mx-auto"
-        >
-          <div className="flex items-center">
-            <img
-              src="https://i.ibb.co/YyhYQLN/vecteezy-3d-high-quality-guarantee-symbol-medal-button-with-18842667.png"
-              alt=""
-              className="h-24"
-            />
-          </div>
-
-          <div>
-            <h1 className="mt-2 text-lg  text-gray-800 font-bold">
-              Submit and Evaluate Assignments
-            </h1>
-
-            <p className="mt-2 text-sm text-gray-400 font-semibold">
-              Submit assignments with ease and receive timely evaluation and
-              feedback. Streamline the marking and grading process while
-              maintaining transparency and accountability.
-            </p>
-            <div className="space-y-1 mx-auto pb-4 mt-4">
-              <p className="badge mr-1 p-3">Submit Assignments</p>
-              <p className="badge p-3">Submit Assignments</p>
-              <p className="badge mr-1 p-3">Feedback Provision</p>
-              <p className="badge p-3">Submission Status</p>
-              <p className="badge p-3">Marking and Grading</p>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featureData.map((feature, index) => (
+          <FeatureCard key={index} {...feature} />
+        ))}
       </div>
     </div>
   );
