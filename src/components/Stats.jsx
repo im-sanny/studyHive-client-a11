@@ -1,107 +1,99 @@
-/* eslint-disable react/no-unescaped-entities */
-import { MdAssignment } from "react-icons/md";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { MdAssignment } from 'react-icons/md';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect } from 'react';
+import { Users, TrendingUp, Activity } from 'lucide-react';
 
-const Stats = () => {
-  const countAssignment = useMotionValue(0);
-  const roundedAssignment = useTransform(countAssignment, Math.round);
-
-  const countStudents = useMotionValue(0);
-  const roundedStudents = useTransform(countStudents, Math.round);
-
-  const countGrowth = useMotionValue(0);
-  const roundedGrowth = useTransform(countGrowth, Math.round);
-
-  const countBounceRate = useMotionValue(0);
-  const roundedBounceRate = useTransform(countBounceRate, Math.round);
+const StatCard = ({ icon: Icon, value, label, color }) => {
+  const count = useMotionValue(0);
+  const roundedCount = useTransform(count, Math.round);
 
   useEffect(() => {
-    animate(countAssignment, 2000, { duration: 8 });
-    animate(countStudents, 7500, { duration: 10 });
-    animate(countGrowth, 172, { duration: 4 });
-    animate(countBounceRate, 17, { duration: 2 });
+    animate(count, value, { duration: 3 });
   }, []);
-  return (
-    <div className="bg-cover bg-no-repeat my-10 rounded-lg bg-center">
-      <section className="p-6 my-6 rounded-lg bg-blue-100 ">
-        <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
-          <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
-            <div className="flex justify-center align-middle rounded-lg sm:p-4 bg-violet-400 dark:bg-violet-600">
-              <MdAssignment size={40} color="white"></MdAssignment>
-            </div>
-            <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none flex">
-                <motion.h1>{roundedAssignment}</motion.h1>+
-              </p>
 
-              <p className="capitalize">Assignment's</p>
-            </div>
-          </div>
-          <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
-            <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400 dark:bg-violet-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                fill="currentColor"
-                className="h-9 w-9 text-gray-800 dark:text-gray-100"
-              >
-                <path d="M256,16C123.452,16,16,123.452,16,256S123.452,496,256,496,496,388.548,496,256,388.548,16,256,16ZM403.078,403.078a207.253,207.253,0,1,1,44.589-66.125A207.332,207.332,0,0,1,403.078,403.078Z"></path>
-                <path d="M256,384A104,104,0,0,0,360,280H152A104,104,0,0,0,256,384Z"></path>
-                <polygon points="205.757 228.292 226.243 203.708 168 155.173 109.757 203.708 130.243 228.292 168 196.827 205.757 228.292"></polygon>
-                <polygon points="285.757 203.708 306.243 228.292 344 196.827 381.757 228.292 402.243 203.708 344 155.173 285.757 203.708"></polygon>
-              </svg>
-            </div>
-            <div className="flex flex-col justify-center align-middle">
-              <motion.p className="text-3xl font-semibold leading-none">
-                {roundedStudents}
-              </motion.p>
-              <p className="capitalize">Student's</p>
-            </div>
-          </div>
-          <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
-            <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400 dark:bg-violet-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                fill="currentColor"
-                className="h-9 w-9 text-gray-800 dark:text-gray-100"
-              >
-                <path d="M425.706,142.294A240,240,0,0,0,16,312v88H160V368H48V312c0-114.691,93.309-208,208-208s208,93.309,208,208v56H352v32H496V312A238.432,238.432,0,0,0,425.706,142.294Z"></path>
-                <rect width="32" height="32" x="80" y="264"></rect>
-                <rect width="32" height="32" x="240" y="128"></rect>
-                <rect width="32" height="32" x="136" y="168"></rect>
-                <rect width="32" height="32" x="400" y="264"></rect>
-                <path d="M297.222,335.1l69.2-144.173-28.85-13.848L268.389,321.214A64.141,64.141,0,1,0,297.222,335.1ZM256,416a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,416Z"></path>
-              </svg>
-            </div>
-            <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none flex justify-center">
-                <motion.p>{roundedGrowth}</motion.p>%
-              </p>
-              <p className="capitalize">Growth</p>
-            </div>
-          </div>
-          <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
-            <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-400 dark:bg-violet-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                fill="currentColor"
-                className="h-9 w-9 text-gray-800 dark:text-gray-100"
-              >
-                <path d="M454.423,278.957,328,243.839v-8.185a116,116,0,1,0-104,0V312H199.582l-18.494-22.6a90.414,90.414,0,0,0-126.43-13.367,20.862,20.862,0,0,0-8.026,33.47L215.084,496H472V302.08A24.067,24.067,0,0,0,454.423,278.957ZM192,132a84,84,0,1,1,136,65.9V132a52,52,0,0,0-104,0v65.9A83.866,83.866,0,0,1,192,132ZM440,464H229.3L79.141,297.75a58.438,58.438,0,0,1,77.181,11.91l28.1,34.34H256V132a20,20,0,0,1,40,0V268.161l144,40Z"></path>
-              </svg>
-            </div>
-            <div className="flex flex-col justify-center align-middle">
-              <p className="text-3xl font-semibold leading-none flex justify-center">
-                <motion.p>{roundedBounceRate}</motion.p>%
-              </p>
-              <p className="capitalize">Bounce rate</p>
-            </div>
-          </div>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className={`
+        relative overflow-hidden rounded-2xl
+        p-6 shadow-lg transform transition-all
+        duration-300 hover:scale-105
+        ${color} text-white
+      `}
+    >
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-3 bg-white/20 rounded-full">
+          <Icon className="w-8 h-8" />
         </div>
-      </section>
+        <div className="absolute top-0 right-0 opacity-10">
+          <Icon className="w-24 h-24" />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <div className="flex items-baseline space-x-2">
+          <motion.span className="text-4xl font-bold">
+            {roundedCount}
+          </motion.span>
+          <span className="text-xl">
+            {label.includes('%') || label.includes('+') ? label.slice(-1) : ''}
+          </span>
+        </div>
+        <p className="text-sm opacity-80 capitalize">
+          {label.replace(/[+%]/g, '')}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+const Stats = () => {
+  const statsData = [
+    {
+      icon: MdAssignment,
+      value: 2000,
+      label: 'Assignments+',
+      color: 'bg-gradient-to-br from-purple-600 to-indigo-600',
+    },
+    {
+      icon: Users,
+      value: 7500,
+      label: 'Students',
+      color: 'bg-gradient-to-br from-green-500 to-emerald-600',
+    },
+    {
+      icon: TrendingUp,
+      value: 172,
+      label: 'Growth%',
+      color: 'bg-gradient-to-br from-pink-500 to-rose-600',
+    },
+    {
+      icon: Activity,
+      value: 17,
+      label: 'Bounce Rate%',
+      color: 'bg-gradient-to-br from-orange-500 to-amber-600',
+    },
+  ];
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          StudyHive Insights
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Real-time analytics and performance metrics of our learning platform
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {statsData.map((stat, index) => (
+          <StatCard key={index} {...stat} />
+        ))}
+      </div>
     </div>
   );
 };
