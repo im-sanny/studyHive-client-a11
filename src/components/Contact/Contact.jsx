@@ -1,104 +1,101 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/no-unescaped-entities */
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import toast from "react-hot-toast";
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
+import { FaPaperPlane, FaEnvelope, FaUser } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
   const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     emailjs
-      .sendForm("service_ast14f7", "template_sdkoue5", form.current, {
-        publicKey: "W-3scYNsYYELOYrTr",
+      .sendForm('service_ast14f7', 'template_sdkoue5', form.current, {
+        publicKey: 'W-3scYNsYYELOYrTr',
       })
       .then(
         () => {
-          console.log("SUCCESS!");
-          toast.success("Message sent Successfully");
+          toast.success('Message sent Successfully!');
           e.target.reset();
+          setIsSubmitting(false);
         },
         (error) => {
-          console.log("FAILED...", error.text);
-          toast.error("failed to send to message");
+          console.error('FAILED...', error.text);
+          toast.error('Failed to send message');
+          setIsSubmitting(false);
         }
       );
   };
+
   return (
-    <div>
-      <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32  bg-base-200 mb-10">
-        <div className="flex flex-col justify-between">
-          <div className="space-y-2">
-            <h2 className="text-4xl font-bold leading-tight lg:text-5xl">
-              Let's connect!
-            </h2>
-            <p>
-              Have questions, need info, or want to share feedback? Fill out the
-              form, and we'll get back to you ASAP!
-            </p>
-            <div className="w-full"></div>
+    <div className="container mx-auto px-4 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden"
+      >
+        <div className="md:flex">
+          {/* Contact Form */}
+          <div className="w-full md:w-1/2 p-8 bg-gradient-to-br from-blue-500 to-purple-600">
+            <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+            <form ref={form} onSubmit={sendEmail} className="space-y-4">
+              <div className="relative">
+                <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full pl-10 pr-3 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white"
+                />
+              </div>
+
+              <div className="relative">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70" />
+                <input
+                  type="email"
+                  name="user_email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full pl-10 pr-3 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white"
+                />
+              </div>
+
+              <div>
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  rows="4"
+                  required
+                  className="w-full px-3 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50"
+              >
+                <FaPaperPlane />
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
           </div>
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            noValidate=""
-            className="space-y-6"
-          >
-            <div>
-              <label htmlFor="name" className="text-sm">
-                Full name
-              </label>
-              <input
-                id="name"
-                type="text"
-                name="user_name"
-                placeholder=""
-                required
-                className="w-full p-3 rounded "
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="text-sm">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="user_email"
-                required
-                className="w-full p-3 rounded "
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="text-sm">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows="3"
-                name="message"
-                required
-                className="w-full p-3 rounded "
-                data-gramm="false"
-                wt-ignore-input="true"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              value="Send"
-              className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-violet-600 dark:text-gray-50"
-            >
-              Send Message
-            </button>
-          </form>
+
+          {/* Contact Illustration */}
+          <div className="hidden md:block w-1/2">
+            <img
+              src="https://i.ibb.co/Q9bDb08/2885557.jpg"
+              alt="Contact Illustration"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
-        <img
-          src={"https://i.ibb.co/Q9bDb08/2885557.jpg"}
-          alt=""
-          className="h-full rounded-md"
-        />
-      </div>
+      </motion.div>
     </div>
   );
 };

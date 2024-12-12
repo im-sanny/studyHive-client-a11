@@ -102,8 +102,8 @@ const Faq = () => {
           </h1>
 
           <p className="max-w-2xl mx-auto text-lg">
-            Find quick answers to the most common questions about StudyHive's
-            features and functionality.
+            Find quick answers to the most common questions about
+            StudyHive&apos;s features and functionality.
           </p>
         </motion.div>
 
