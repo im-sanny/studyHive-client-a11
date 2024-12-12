@@ -11,7 +11,7 @@ AOS.init();
 
 const Banner = () => {
   return (
-    <div className="my-10">
+    <div className="">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

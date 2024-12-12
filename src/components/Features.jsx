@@ -124,7 +124,7 @@ const FeatureCard = ({
 
 const Features = () => {
   return (
-    <div className="container mx-auto px-4 lg:px-0 py-1">
+    <div className="container mx-auto px-4 lg:px-0">
       <div className="text-center lg:mb-12">
         <p className="badge uppercase p-3 bg-rose-50 text-rose-400">
           StudyHive Features

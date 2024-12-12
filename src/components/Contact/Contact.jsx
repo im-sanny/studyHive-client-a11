@@ -31,7 +31,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 pb-16">
+      <div className="mx-auto text-center mb-8">
+        <h1 className="text-4xl font-bold">Contact with Us</h1>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

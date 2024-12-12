@@ -1,19 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 const StudentTeam = () => {
   return (
-    <div className="mt-5">
-      <div className="space-y-4 mx-auto text-center">
-        <h3 className="text-2xl font-bold leading-none sm:text-5xl">
-          Bright student's of StudyHive
-        </h3>
-        <p className="max-w-2xl mx-auto">
-          In StudyHive, bright students thrive, fueled by curiosity and
-          ambition. They engage, dissect, and conquer challenges, shaping a
-          future of innovation.
-        </p>
-      </div>
-      <section className="py-6 ">
-        <div className="container p-4 mx-auto space-y-16 sm:p-10">
+    <>
+      <section>
+        <div className="space-y-4 mx-auto text-center">
+          <h3 className="font-bold leading-none text-4xl">
+            Bright student's of StudyHive
+          </h3>
+          <p className="max-w-2xl mx-auto px-4 lg:px-0">
+            In StudyHive, bright students thrive, fueled by curiosity and
+            ambition. They engage, dissect, and conquer challenges, shaping a
+            future of innovation.
+          </p>
+        </div>
+        <div className="container  mx-auto pt-10 px-4">
           <div className="grid w-full grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
             <div className="space-y-4">
               <img
@@ -128,7 +128,7 @@ const StudentTeam = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

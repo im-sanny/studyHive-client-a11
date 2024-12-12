@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, MessageCircleQuestion } from 'lucide-react';
 
 const faqData = [
   {
@@ -29,21 +29,27 @@ const FAQItem = ({ question, answer }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-xl hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center
-        p-5 text-left focus:outline-none"
+        p-6 text-left focus:outline-none group"
       >
-        <span className="text-lg font-medium text-gray-800">{question}</span>
+        <span
+          className="text-lg font-semibold text-gray-800 dark:text-gray-100
+        group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+        >
+          {question}
+        </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
           <ChevronDown
-            className={`w-6 h-6 text-blue-500
-            ${isOpen ? 'transform rotate-180' : ''}`}
+            className={`w-6 h-6 text-gray-500 dark:text-gray-400
+            group-hover:text-blue-600 dark:group-hover:text-blue-400
+            transition-colors ${isOpen ? 'transform rotate-180' : ''}`}
           />
         </motion.div>
       </button>
@@ -70,7 +76,9 @@ const FAQItem = ({ question, answer }) => {
             }}
             className="overflow-hidden"
           >
-            <div className="p-5 pt-0 text-gray-600">{answer}</div>
+            <div className="px-6 pb-6 text-gray-600 dark:text-gray-300">
+              {answer}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -80,19 +88,15 @@ const FAQItem = ({ question, answer }) => {
 
 const Faq = () => {
   return (
-    <div className="bg-gray-50 dark:bg-base-200 py-10 my-10 rounded-xl">
+    <div className="  min-h-screen">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <div
-            className="inline-flex items-center
-            mb-4 px-4 py-2 rounded-full
-            bg-blue-50 text-blue-600"
-          >
+          <div className="inline-flex items-center mb-4 px-4 py-2 rounded-full bg-blue-100 text-blue-700">
             <HelpCircle className="mr-2 w-5 h-5" />
             <span className="text-sm font-medium">How it works</span>
           </div>
@@ -107,7 +111,7 @@ const Faq = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-5">
           {faqData.map((faq, index) => (
             <FAQItem key={index} question={faq.question} answer={faq.answer} />
           ))}
@@ -117,14 +121,25 @@ const Faq = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-12"
+          className="text-center mt-14"
         >
-          <p className="text-gray-600">
-            Still have questions?{' '}
-            <a href="/contact" className="text-blue-600 hover:underline">
-              Contact our support team
-            </a>
-          </p>
+          <div
+            className="inline-flex items-center space-x-2
+          bg-white dark:bg-gray-800 px-6 py-3 rounded-full
+          shadow-md dark:shadow-xl border border-gray-100 dark:border-gray-700"
+          >
+            <MessageCircleQuestion className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            <p className="text-gray-700 dark:text-gray-200">
+              Still have questions?{' '}
+              <a
+                href="/contact"
+                className="text-blue-600 dark:text-blue-400
+                hover:underline font-semibold"
+              >
+                Contact our support team
+              </a>
+            </p>
+          </div>
         </motion.div>
       </div>
     </div>

@@ -1,36 +1,21 @@
-import Banner from "../components/Banner";
-import Contact from "../components/Contact/Contact";
-import Faq from "../components/Faq";
-import Features from "../components/Features";
-import MkSlider from "../components/MkSlider";
-import Stats from "../components/Stats";
-import StudentTeam from "../components/StudentTeam";
+import Banner from '../components/Banner';
+import Contact from '../components/Contact/Contact';
+import Faq from '../components/Faq';
+import Features from '../components/Features';
+import MkSlider from '../components/MkSlider';
+import Stats from '../components/Stats';
+import StudentTeam from '../components/StudentTeam';
 
 const Home = () => {
   return (
-    <div>
-      <div>
-        <Banner></Banner>
-      </div>
-      <div>
-        <Features></Features>
-      </div>
-      <div>
-        <Stats></Stats>
-      </div>
-      <div>
-
+    <div className='space-y-16'>
+      <Banner></Banner>
+      <Features></Features>
+      <Stats></Stats>
       <StudentTeam></StudentTeam>
-      </div>
-      <div>
-        <MkSlider></MkSlider>
-      </div>
-      <div>
-        <Faq></Faq>
-      </div>
-      <div>
-        <Contact></Contact>
-      </div>
+      <MkSlider></MkSlider>
+      <Faq></Faq>
+      <Contact></Contact>
     </div>
   );
 };
