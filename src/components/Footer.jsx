@@ -1,5 +1,4 @@
-import { MdOutlineMarkEmailUnread } from "react-icons/md";
-import { FaPhoneSquareAlt } from "react-icons/fa";
+import { Github } from 'lucide-react';
 const Footer = () => {
   return (
     <div>
@@ -25,12 +24,14 @@ const Footer = () => {
             <div className="w-full lg:text-start text-center">
               <p>Connect with us</p>
               <p className="flex lg:justify-start justify-center items-center gap-1 lg:text-left text-center lg:pr-5">
-                <MdOutlineMarkEmailUnread size={20} />{" "}
-                raselparvezsanny@gmail.com
-              </p>
-              <p className="flex lg:justify-start justify-center items-center gap-1 lg:text-left text-center lg:pr-5">
-                <FaPhoneSquareAlt size={20} />
-                +880190750769
+                <Github size={20} />{' '}
+                <a
+                  href="https://github.com/im-sanny"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://github.com/im-sanny
+                </a>
               </p>
             </div>
           </div>
