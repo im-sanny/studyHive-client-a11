@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, HelpCircle, MessageCircleQuestion } from 'lucide-react';
+import { useState } from 'react';
 
 const faqData = [
   {

@@ -1,22 +1,21 @@
-import { createBrowserRouter } from "react-router-dom";
-import Main from "../layout/Main";
-import ErrorPage from "../pages/ErrorPage";
-import Login from "../pages/Authentication/Login";
-import Registration from "../pages/Authentication/Registration";
-import Home from "../pages/Home";
-import CreateAssignment from "../pages/CreateAssignment";
-import Assignments from "../pages/Assignments";
-import AssignmentDetails from "../pages/subpages/AssignmentDetails";
-import UpdateAssignment from "../pages/UpdateAssignment";
-import PrivateRoutes from "./PrivateRoutes";
-import MySubmittedAsn from "../pages/MySubmittedAsn";
-import PendingAssignment from "../pages/PendingAssignment";
-import AllSubmittedAsn from "../pages/AllSubmittedAsn";
-
+import { createBrowserRouter } from 'react-router-dom';
+import Main from '../layout/Main';
+import AllSubmittedAsn from '../pages/AllSubmittedAsn';
+import AssignmentDetails from '../pages/AssignmentDetails';
+import Assignments from '../pages/Assignments';
+import Login from '../pages/Authentication/Login';
+import Registration from '../pages/Authentication/Registration';
+import CreateAssignment from '../pages/CreateAssignment';
+import ErrorPage from '../pages/ErrorPage';
+import Home from '../pages/Home';
+import MySubmittedAsn from '../pages/MySubmittedAsn';
+import PendingAssignment from '../pages/PendingAssignment';
+import UpdateAssignment from '../pages/UpdateAssignment';
+import PrivateRoutes from './PrivateRoutes';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
@@ -25,15 +24,15 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/login",
+        path: '/login',
         element: <Login></Login>,
       },
       {
-        path: "/registration",
+        path: '/registration',
         element: <Registration></Registration>,
       },
       {
-        path: "/createAssignment",
+        path: '/createAssignment',
         element: (
           <PrivateRoutes>
             <CreateAssignment></CreateAssignment>
@@ -41,12 +40,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/assignments",
+        path: '/assignments',
         element: <Assignments></Assignments>,
         loader: () => fetch(`${import.meta.env.VITE_API_URL}/asnmnts`),
       },
       {
-        path: "/assignmentDetails/:id",
+        path: '/assignmentDetails/:id',
         element: (
           <PrivateRoutes>
             <AssignmentDetails></AssignmentDetails>
@@ -54,11 +53,11 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`, {
-            credentials: "include",
+            credentials: 'include',
           }),
       },
       {
-        path: "/update/:id",
+        path: '/update/:id',
         element: (
           <PrivateRoutes>
             <UpdateAssignment></UpdateAssignment>
@@ -66,11 +65,11 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/asnmnt/${params.id}`, {
-            credentials: "include",
+            credentials: 'include',
           }),
       },
       {
-        path: "/mySubmit",
+        path: '/mySubmit',
         element: (
           <PrivateRoutes>
             <MySubmittedAsn></MySubmittedAsn>
@@ -78,7 +77,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/pendingAssignment",
+        path: '/pendingAssignment',
         element: (
           <PrivateRoutes>
             <PendingAssignment></PendingAssignment>
@@ -86,10 +85,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/allSubmittedAsn",
+        path: '/allSubmittedAsn',
         element: (
           <PrivateRoutes>
-           <AllSubmittedAsn></AllSubmittedAsn>
+            <AllSubmittedAsn></AllSubmittedAsn>
           </PrivateRoutes>
         ),
       },

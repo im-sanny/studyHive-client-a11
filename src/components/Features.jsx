@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
-import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { motion } from 'framer-motion';
 import {
+  AwardIcon,
   ClipboardListIcon,
   FilterIcon,
   FolderEditIcon,
-  AwardIcon,
 } from 'lucide-react';
+
 AOS.init({
   duration: 800, // Reduced duration for smoother effect
   easing: 'ease-in-out', // Smoother easing function

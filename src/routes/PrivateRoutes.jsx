@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import { Navigate, useLocation } from "react-router-dom";
-import Lottie from "lottie-react";
-import groovyWalkAnimation from "../lottie.json";
+import Lottie from 'lottie-react';
+import { useContext } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import groovyWalkAnimation from '../lottie.json';
+import { AuthContext } from '../provider/AuthProvider';
 
 const PrivateRoutes = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const PrivateRoutes = ({ children }) => {
   if (user) return children;
 
   return (
-    <Navigate to={"/login"} state={location.pathname} replace={true}></Navigate>
+    <Navigate to={'/login'} state={location.pathname} replace={true}></Navigate>
   );
 };
 

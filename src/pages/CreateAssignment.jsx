@@ -1,11 +1,11 @@
 // and due date [use this package
-import { useContext, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../provider/AuthProvider";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const CreateAssignment = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +22,7 @@ const CreateAssignment = () => {
     const difficulty = form.difficulty.value;
     const marks = parseFloat(form.marks.value);
     if (marks < 50 || marks > 100) {
-      return toast.error("Marks should be between 50 and 100");
+      return toast.error('Marks should be between 50 and 100');
     }
     const description = form.description.value;
 
@@ -44,13 +44,13 @@ const CreateAssignment = () => {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/asnmnts`,
         cAssignmentData,
-        { withCredentials: true }
+        { withCredentials: true },
       );
-      toast.success("Assignment created successfully");
+      toast.success('Assignment created successfully');
       console.log(data);
       form.reset();
       setStartDate(new Date());
-      navigate("/assignments");
+      navigate('/assignments');
     } catch (error) {
       console.log(error);
       toast.error(error.message);

@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import axios from "axios";
-import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../provider/AuthProvider';
 
 const PendingAssignment = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +15,7 @@ const PendingAssignment = () => {
   const getDate = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_URL}/pending`,
-      { withCredentials: true }
+      { withCredentials: true },
     );
     setSubAsn(response.data);
   };
@@ -24,22 +24,22 @@ const PendingAssignment = () => {
   // handle marks
   const handleMarks = async (id, finalMark, feedback) => {
     if (user?.email === subAsn.student?.email) {
-      return toast.error("Creator cant mark their own assignment");
+      return toast.error('Creator cant mark their own assignment');
     }
 
     try {
       // eslint-disable-next-line no-unused-vars
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt/${id}`,
-        { status: "Completed", obtainedMark: finalMark, feedback: feedback },
-        { withCredentials: true }
+        { status: 'Completed', obtainedMark: finalMark, feedback: feedback },
+        { withCredentials: true },
       );
       setSubAsn((prevSubAsn) => prevSubAsn.filter((asn) => asn._id !== id));
-      toast.success("Assignment marking successful");
+      toast.success('Assignment marking successful');
       // console.log(data);
     } catch (error) {
-      console.error("Error marking assignment:", error);
-      toast.error("Failed to mark assignment. Please try again later.");
+      console.error('Error marking assignment:', error);
+      toast.error('Failed to mark assignment. Please try again later.');
     }
   };
 
@@ -52,13 +52,13 @@ const PendingAssignment = () => {
         <div className="overflow-x-auto rounded-lg">
           <table
             className="min-w-full text-md"
-            style={{ tableLayout: "fixed" }}
+            style={{ tableLayout: 'fixed' }}
           >
             <colgroup>
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
             </colgroup>
             <thead className="bg-gray-700 dark:bg-green-300 text-black font-bold">
               <tr className="text-left">
@@ -82,17 +82,17 @@ const PendingAssignment = () => {
                   <td className="">
                     <p
                       className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
-                        assignment.status === "Pending" &&
-                        "bg-yellow-100 text-yellow-700"
+                        assignment.status === 'Pending' &&
+                        'bg-yellow-100 text-yellow-700'
                       } ${
-                        assignment.status === "In Progress" &&
-                        "bg-blue-100/60 text-blue-500"
+                        assignment.status === 'In Progress' &&
+                        'bg-blue-100/60 text-blue-500'
                       } ${
-                        assignment.status === "Complete" &&
-                        "bg-emerald-100/60 text-emerald-500"
+                        assignment.status === 'Complete' &&
+                        'bg-emerald-100/60 text-emerald-500'
                       } ${
-                        assignment.status === "Rejected" &&
-                        "bg-red-100/60 text-red-500"
+                        assignment.status === 'Rejected' &&
+                        'bg-red-100/60 text-red-500'
                       }`}
                     >
                       {assignment.status}
@@ -101,7 +101,7 @@ const PendingAssignment = () => {
                   <td
                     onClick={() =>
                       Swal.fire({
-                        title: "Mark Assignment",
+                        title: 'Mark Assignment',
                         html: `
                             <p>PDF/doc link: ${assignment.link}</p>
                             <p>Examinee Notes: ${assignment.notes}</p>
@@ -118,20 +118,20 @@ const PendingAssignment = () => {
                             name="feedback"
                             placeholder="Examiner Feedback"
                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-                            
+
                             ></textarea>
                         `,
                         showCancelButton: true,
-                        confirmButtonText: "Submit",
+                        confirmButtonText: 'Submit',
                         focusConfirm: false,
                         preConfirm: () => {
                           const finalMark =
-                            Swal.getPopup().querySelector("#finalMarks").value;
+                            Swal.getPopup().querySelector('#finalMarks').value;
                           const feedback =
-                            Swal.getPopup().querySelector("#feedback").value;
+                            Swal.getPopup().querySelector('#feedback').value;
                           if (!finalMark || !feedback) {
                             toast.error(
-                              "Please enter final mark and feedback."
+                              'Please enter final mark and feedback.',
                             );
                             return false;
                           }

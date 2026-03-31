@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
   return (
@@ -9,9 +9,9 @@ const ErrorPage = () => {
         className="flex items-center bg-cover bg-center h-[100vh] "
         style={{
           backgroundImage: `url('https://i.ibb.co/MGLVLC0/Error-404.jpg')`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
         <div className="container flex flex-col items-center justify-center">

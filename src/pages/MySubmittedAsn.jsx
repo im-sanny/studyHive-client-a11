@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import axios from "axios";
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 // import { getDate } from "date-fns";
 
 const MySubmittedAsn = () => {
@@ -14,7 +14,7 @@ const MySubmittedAsn = () => {
   const getDate = async () => {
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}/my-submit/${user?.email}`,
-      { withCredentials: true }
+      { withCredentials: true },
     );
     setSubAsn(data);
   };
@@ -26,13 +26,13 @@ const MySubmittedAsn = () => {
         My Assignments
       </h2>
       <div className="overflow-x-auto rounded-lg">
-        <table className="min-w-full text-md" style={{ tableLayout: "fixed" }}>
+        <table className="min-w-full text-md" style={{ tableLayout: 'fixed' }}>
           <colgroup>
-            <col style={{ width: "20%" }} />
-            <col style={{ width: "20%" }} />
-            <col style={{ width: "20%" }} />
-            <col style={{ width: "20%" }} />
-            <col style={{ width: "20%" }} />
+            <col style={{ width: '20%' }} />
+            <col style={{ width: '20%' }} />
+            <col style={{ width: '20%' }} />
+            <col style={{ width: '20%' }} />
+            <col style={{ width: '20%' }} />
           </colgroup>
           <thead className="bg-gray-700 dark:bg-green-300 text-black font-bold">
             <tr className="text-left">
@@ -52,29 +52,29 @@ const MySubmittedAsn = () => {
                 <td className="p-3 ml-5">{assignment.title}</td>
                 <td className="p-3 ">{assignment.marks}</td>
                 <td className="p-3 badge border-none text-black flex items-center  my-3 lg:ml-5 bg-green-300">
-                  {assignment.obtainedMark || "pending"}
+                  {assignment.obtainedMark || 'pending'}
                 </td>
                 <td className="my-3 p-3">
                   <p
                     className={`badge border-none text-black lg:flex items-center bg-blue-300  ${
-                      assignment.status === "Pending" &&
-                      "bg-yellow-100/60 text-yellow-500"
+                      assignment.status === 'Pending' &&
+                      'bg-yellow-100/60 text-yellow-500'
                     } ${
-                      assignment.status === "In Progress" &&
-                      "bg-blue-100/60 text-blue-500"
+                      assignment.status === 'In Progress' &&
+                      'bg-blue-100/60 text-blue-500'
                     } ${
-                      assignment.status === "Complete" &&
-                      "bg-emerald-100/60 text-emerald-500"
+                      assignment.status === 'Complete' &&
+                      'bg-emerald-100/60 text-emerald-500'
                     } ${
-                      assignment.status === "Rejected" &&
-                      "bg-red-100/60 text-red-500"
+                      assignment.status === 'Rejected' &&
+                      'bg-red-100/60 text-red-500'
                     }`}
                   >
                     {assignment.status}
                   </p>
                 </td>
                 <td className="p-3 badge border-none text-black flex items-center my-3 bg-green-300 lg:ml-5">
-                  {assignment.feedback || "pending"}
+                  {assignment.feedback || 'pending'}
                 </td>
               </tr>
             ))}

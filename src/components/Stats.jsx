@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { MdAssignment } from 'react-icons/md';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
+import { Activity, TrendingUp, Users } from 'lucide-react';
 import { useEffect } from 'react';
-import { Users, TrendingUp, Activity } from 'lucide-react';
+import { MdAssignment } from 'react-icons/md';
 
 const StatCard = ({ icon: Icon, value, label, color }) => {
   const count = useMotionValue(0);
@@ -81,9 +81,7 @@ const Stats = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">
-          StudyHive Insights
-        </h2>
+        <h2 className="text-4xl font-bold mb-4">StudyHive Insights</h2>
         <p className="max-w-2xl mx-auto">
           Real-time analytics and performance metrics of our learning platform
         </p>

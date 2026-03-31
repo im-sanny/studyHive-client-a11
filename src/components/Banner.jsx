@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import { Link } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 AOS.init();
 
 const Banner = () => {
@@ -57,14 +57,14 @@ const Banner = () => {
                     href="#"
                     className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50"
                   >
-                    <Link to={"/login"}>Login</Link>
+                    <Link to={'/login'}>Login</Link>
                   </a>
                   <a
                     rel="noopener noreferrer"
                     href="#"
                     className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
-                    <Link to={"/registration"}>Registration</Link>
+                    <Link to={'/registration'}>Registration</Link>
                   </a>
                 </div>
               </div>
@@ -95,14 +95,14 @@ const Banner = () => {
                     href="#"
                     className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50"
                   >
-                    <Link to={"/login"}>Login</Link>
+                    <Link to={'/login'}>Login</Link>
                   </a>
                   <a
                     rel="noopener noreferrer"
                     href="#"
                     className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
-                    <Link to={"/registration"}>Registration</Link>
+                    <Link to={'/registration'}>Registration</Link>
                   </a>
                 </div>
               </div>
@@ -133,14 +133,14 @@ const Banner = () => {
                     href="#"
                     className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50"
                   >
-                    <Link to={"/login"}>Login</Link>
+                    <Link to={'/login'}>Login</Link>
                   </a>
                   <a
                     rel="noopener noreferrer"
                     href="#"
                     className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
-                    <Link to={"/registration"}>Registration</Link>
+                    <Link to={'/registration'}>Registration</Link>
                   </a>
                 </div>
               </div>
@@ -171,14 +171,14 @@ const Banner = () => {
                     href="#"
                     className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50"
                   >
-                    <Link to={"/login"}>Login</Link>
+                    <Link to={'/login'}>Login</Link>
                   </a>
                   <a
                     rel="noopener noreferrer"
                     href="#"
                     className="px-8 py-3 text-lg font-semibold border rounded border-violet-600"
                   >
-                    <Link to={"/registration"}>Registration</Link>
+                    <Link to={'/registration'}>Registration</Link>
                   </a>
                 </div>
               </div>

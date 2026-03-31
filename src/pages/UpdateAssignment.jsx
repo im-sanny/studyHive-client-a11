@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import DatePicker from "react-datepicker";
-import { AuthContext } from "../provider/AuthProvider";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import axios from "axios";
-import toast from "react-hot-toast";
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const UpdateAssignment = () => {
   const asnmnt = useLoaderData();
@@ -23,7 +23,7 @@ const UpdateAssignment = () => {
     const difficulty = form.difficulty.value;
     const marks = parseFloat(form.marks.value);
     if (marks < 50 || marks > 100) {
-      return toast.error("Marks should be between 50 and 100");
+      return toast.error('Marks should be between 50 and 100');
     }
 
     const update = {
@@ -38,11 +38,11 @@ const UpdateAssignment = () => {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/asnmnt/${_id}`,
         update,
-        { withCredentials: true }
+        { withCredentials: true },
       );
       console.log(data);
-      toast.success("Assignment Updated Successfully!");
-      navigate("/assignments");
+      toast.success('Assignment Updated Successfully!');
+      navigate('/assignments');
     } catch (error) {
       console.log(error);
       toast.error(error.message);

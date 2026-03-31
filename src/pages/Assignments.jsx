@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect, useContext } from "react";
-import { FaEye } from "react-icons/fa";
-import { AiFillDelete } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import toast from "react-hot-toast";
-import Swal from "sweetalert2";
-import { AuthContext } from "../provider/AuthProvider";
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { AiFillDelete } from 'react-icons/ai';
+import { FaEdit, FaEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Assignments = () => {
   const { user } = useContext(AuthContext);
@@ -15,25 +14,25 @@ const Assignments = () => {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(5);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
 
   // console.log(asnmnts);
 
-  const [filterValue, setFilterValue] = useState("all");
+  const [filterValue, setFilterValue] = useState('all');
   const handleFilterChange = (e) => {
     setFilterValue(e.target.value);
   };
   const filteredAsnmnts =
-    filterValue === "all"
+    filterValue === 'all'
       ? asnmnts
       : asnmnts.filter((item) => item.difficulty === filterValue);
 
   const badgeColors = {
-    easy: "bg-green-200 text-green-800",
-    medium: "bg-yellow-200 text-yellow-800",
-    hard: "bg-red-200 text-red-800",
+    easy: 'bg-green-200 text-green-800',
+    medium: 'bg-yellow-200 text-yellow-800',
+    hard: 'bg-red-200 text-red-800',
   };
-  
+
   // Fetch assignments
   useEffect(() => {
     const getAssignments = async () => {
@@ -42,7 +41,7 @@ const Assignments = () => {
           `${
             import.meta.env.VITE_API_URL
           }/asnmnts?page=${currentPage}&size=${itemsPerPage}&filter=${filter}`,
-          { withCredentials: true }
+          { withCredentials: true },
         );
         setAsnmnts(data);
       } catch (error) {
@@ -58,7 +57,7 @@ const Assignments = () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/assignment-count`,
-          { withCredentials: true }
+          { withCredentials: true },
         );
         setCount(data.count);
       } catch (error) {
@@ -81,25 +80,25 @@ const Assignments = () => {
     const assignmentToDelete = asnmnts.find((asnmnt) => asnmnt._id === id);
 
     if (!assignmentToDelete) {
-      console.error("Assignment not found");
+      console.error('Assignment not found');
       return;
     }
 
     const student_email = assignmentToDelete.student.email;
 
     if (user?.email !== student_email) {
-      toast.error("You are not authorized to delete this assignment.");
+      toast.error('You are not authorized to delete this assignment.');
       return;
     }
 
     Swal.fire({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this assignment!",
-      icon: "warning",
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this assignment!',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -109,10 +108,10 @@ const Assignments = () => {
           });
           // Remove the deleted assignment from the local state
           setAsnmnts((prevAsnmnts) =>
-            prevAsnmnts.filter((asnmnt) => asnmnt._id !== id)
+            prevAsnmnts.filter((asnmnt) => asnmnt._id !== id),
           );
           // Show success message
-          toast.success("Assignment deleted successfully!");
+          toast.success('Assignment deleted successfully!');
         } catch (error) {
           console.log(error.message);
           toast.error(error.message);
@@ -282,7 +281,7 @@ const Assignments = () => {
             onClick={() => handlePaginationButton(btnNum)}
             key={btnNum}
             className={`hidden ${
-              currentPage === btnNum ? "bg-blue-500 text-white" : ""
+              currentPage === btnNum ? 'bg-blue-500 text-white' : ''
             } px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
           >
             {btnNum}

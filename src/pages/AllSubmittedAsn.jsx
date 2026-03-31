@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const AllSubmittedAsn = () => {
   const [allSubmit, setAllSubmit] = useState([]);
@@ -10,7 +10,7 @@ const AllSubmittedAsn = () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/allSubmitted`,
-          { withCredentials: true }
+          { withCredentials: true },
         );
         setAllSubmit(data);
       } catch (error) {
@@ -29,13 +29,13 @@ const AllSubmittedAsn = () => {
         <div className="overflow-x-auto rounded-lg">
           <table
             className="min-w-full text-md"
-            style={{ tableLayout: "fixed" }}
+            style={{ tableLayout: 'fixed' }}
           >
             <colgroup>
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
-              <col style={{ width: "20%" }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
+              <col style={{ width: '20%' }} />
             </colgroup>
             <thead className="bg-gray-700 dark:bg-green-300 text-black font-bold">
               <tr className="text-left">
@@ -59,17 +59,17 @@ const AllSubmittedAsn = () => {
                   <td className="">
                     <p
                       className={`badge border-none text-black flex items-center bg-blue-300 p-3 ${
-                        assignment.status === "Pending" &&
-                        "bg-yellow-100 text-yellow-700"
+                        assignment.status === 'Pending' &&
+                        'bg-yellow-100 text-yellow-700'
                       } ${
-                        assignment.status === "In Progress" &&
-                        "bg-blue-100/60 text-blue-500"
+                        assignment.status === 'In Progress' &&
+                        'bg-blue-100/60 text-blue-500'
                       } ${
-                        assignment.status === "Complete" &&
-                        "bg-emerald-100/60 text-emerald-500"
+                        assignment.status === 'Complete' &&
+                        'bg-emerald-100/60 text-emerald-500'
                       } ${
-                        assignment.status === "Rejected" &&
-                        "bg-red-100/60 text-red-500"
+                        assignment.status === 'Rejected' &&
+                        'bg-red-100/60 text-red-500'
                       }`}
                     >
                       {assignment.status}
@@ -80,14 +80,14 @@ const AllSubmittedAsn = () => {
                       className="btn btn-sm"
                       onClick={() =>
                         Swal.fire({
-                          title: "Assignment Preview",
+                          title: 'Assignment Preview',
                           html: `
                           <div>
                               <iframe src="${assignment.link}" frameborder="0" style="width:100%;height:500px;">
                               </iframe>
                           </div>`,
                           showCancelButton: false,
-                          confirmButtonText: "Ok",
+                          confirmButtonText: 'Ok',
                         })
                       }
                     >

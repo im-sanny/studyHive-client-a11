@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { FaPaperPlane, FaEnvelope, FaUser } from 'react-icons/fa';
+import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaEnvelope, FaPaperPlane, FaUser } from 'react-icons/fa';
 
 const Contact = () => {
   const form = useRef();
@@ -26,7 +26,7 @@ const Contact = () => {
           console.error('FAILED...', error.text);
           toast.error('Failed to send message');
           setIsSubmitting(false);
-        }
+        },
       );
   };
 

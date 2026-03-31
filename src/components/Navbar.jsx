@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
+import {
+  Clock,
+  FileText,
+  Home,
+  LogIn,
+  LogOut,
+  Menu,
+  Moon,
+  PlusCircle,
+  Sun,
+  User,
+} from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
-import {
-  Menu,
-  Moon,
-  Sun,
-  Home,
-  FileText,
-  PlusCircle,
-  Clock,
-  LogIn,
-  User,
-  LogOut,
-} from 'lucide-react';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);

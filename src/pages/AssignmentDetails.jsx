@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
-import axios from "axios";
-import toast from "react-hot-toast";
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const AssignmentDetails = () => {
   const { user } = useContext(AuthContext);
@@ -16,11 +16,11 @@ const AssignmentDetails = () => {
 
   const { description, difficulty, deadline, title, marks, student } =
     asnmnt || {};
-console.log(asnmnt);
+  console.log(asnmnt);
   const handleFromSubmission = async (e) => {
     e.preventDefault();
     if (user?.email === student?.email) {
-      return toast.error("Creator cant take their own assignment");
+      return toast.error('Creator cant take their own assignment');
     }
 
     const form = e.target;
@@ -29,7 +29,7 @@ console.log(asnmnt);
     const name = user?.displayName;
     const deadline = startDate;
     const notes = form.notes.value;
-    const status = "Pending";
+    const status = 'Pending';
     const obtainedMark = parseFloat(0);
 
     const takeAsnmnt = {
@@ -50,20 +50,20 @@ console.log(asnmnt);
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/takeAsnmnt`,
         takeAsnmnt,
-        { withCredentials: true }
+        { withCredentials: true },
       );
       console.log(data);
-      document.getElementById("my_modal_5").close();
+      document.getElementById('my_modal_5').close();
       // Optionally, you can display a success message using toast.success()
-      toast.success("Assignment submitted successfully!");
-      navigate("/mySubmit");
+      toast.success('Assignment submitted successfully!');
+      navigate('/mySubmit');
     } catch (error) {
       console.log(error.message);
       toast.error(error.message);
     }
   };
   useEffect(() => {
-    const modal = document.getElementById("my_modal_5");
+    const modal = document.getElementById('my_modal_5');
 
     // Function to close modal when clicking outside
     const handleClickOutside = (event) => {
@@ -73,11 +73,11 @@ console.log(asnmnt);
     };
 
     // Add event listener when component mounts
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
 
     // Remove event listener when component unmounts
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -127,7 +127,7 @@ console.log(asnmnt);
                 <button
                   className="btn w-full bg-blue-100 text-blue-600 border-blue-700 border-2"
                   onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
+                    document.getElementById('my_modal_5').showModal()
                   }
                 >
                   Take Assignment
@@ -192,7 +192,7 @@ console.log(asnmnt);
                                 id="notes"
                                 name="notes"
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none textarea focus:ring"
-                                style={{ height: "50px" }}
+                                style={{ height: '50px' }}
                               />
                             </div>
                           </div>

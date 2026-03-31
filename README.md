@@ -30,7 +30,7 @@ To run this project locally, follow these steps:
 1. **Clone the Repository:**
 
 ```bash
-git clone <https://github.com/your-username/studyhive.git>
+git clone <https://github.com/im-sanny/studyhive.git>
 cd studyhive
 
 ```

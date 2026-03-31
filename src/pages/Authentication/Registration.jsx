@@ -1,8 +1,8 @@
+import axios from 'axios';
 import { useContext, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
-import toast from 'react-hot-toast';
-import axios from 'axios';
 
 const Registration = () => {
   const location = useLocation();
@@ -52,7 +52,7 @@ const Registration = () => {
         {
           email: result?.user?.email,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       console.log(data);
       navigate(from, { replace: true });
@@ -76,7 +76,7 @@ const Registration = () => {
         {
           email: result?.user?.email,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       console.log(data);
       toast.success('SignIn Successful');
